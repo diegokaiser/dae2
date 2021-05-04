@@ -1,0 +1,33 @@
+*{
+    margin: 0px ;
+    box-sizing: border-box;   
+}
+
+body{
+    
+}
+
+header{
+  height: 200px;
+  width: 100%;
+  color:#ecf0f1;
+  background-color:#2980b9;   
+  text-align: center;
+  padding-top: 50px;  
+}
+
+.botones{ 
+    text-align: center;
+    padding-top: 10px;
+}
+section{
+    min-height: 500px;
+}
+footer{
+  height: 200px;
+  width: 100%;
+  color:#ecf0f1;
+  background-color:black;   
+  text-align: center;
+  padding-top: 50px;       
+}

@@ -1,0 +1,237 @@
+@import "../globals/global";
+@import "../globals/mediaqueries";
+
+.home {
+  &-grid {
+    font-family: 'Roboto', sans-serif;
+    padding: 30px 0 100px 0;
+    h3 {
+      color: white;
+      font-size: 21px;
+      margin-bottom: 0;
+      margin-top: 70px;
+      @include tablet600 {
+        font-size: 28px;
+      }
+    }
+    .ver-todos {
+      color: $font-strong;
+      display: inline-block;
+      margin-bottom: 0;
+      margin-top: 70px;
+      &:hover {
+        color: $font-primary;
+      }
+    }
+  }
+  &-movie {
+    font-family: 'Roboto', sans-serif;
+    height: 189px;
+    margin: 0 15px;
+    position: relative;
+    width: 445.75px;
+    .img {
+      bottom: 0;
+      left: 0;
+      position: absolute;
+      right: 0;
+      top: 0;
+      z-index: 1;
+      img {
+        height: 100%;
+        object-fit: cover;
+        width: 100%;
+      }
+    }
+    .contenido {
+      align-items: flex-start;
+      background: rgb(0,0,0);
+      background: linear-gradient(90deg, rgba(0, 0, 0, 0.9) 0%, rgba(20, 20, 20, 0.9) 15%, rgba(83, 100, 141, 0) 100%);
+      bottom: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      left: 0;
+      padding: 0 5%;
+      position: absolute;
+      right: 0;
+      top: 0;
+      z-index: 2;
+      .titulo {
+        h4 {
+          color: $font-primary;
+          font-size: 16px;
+          font-weight: $font-black;
+        }
+      }
+      .timing {
+        span {
+          color: $font-primary;
+          font-size: 12px;
+        }
+      }
+      .cta {
+        margin-top: 21px;
+        a {
+          align-items: center;
+          background-color: $font-strong;
+          border: 2px solid $font-strong;
+          color: $font-primary;
+          display: flex;
+          font-size: 12px;
+          font-weight: $font-bold;
+          padding: 7px 14px;
+          text-transform: uppercase;
+          transition: .35s ease;
+          i {
+            margin-right: 14px;
+          }
+          &:hover {
+            background-color: $font-primary;
+            border: 2px solid $font-primary;
+            color: $font-strong;
+          }
+        }
+      }
+    }
+  }
+}
+
+.banner {
+  &-destacado {
+    height: 100vh;
+    font-family: 'Roboto', sans-serif;
+    position: relative;
+    width: 100%;
+    .img {
+      bottom: 0;
+      left: 0;
+      position: absolute;
+      right: 0;
+      top: 0;
+      z-index: 1;
+      img {
+        height: 100%;
+        object-fit: cover;
+        width: 100%;
+      }
+    }
+    .contenido {
+      align-items: flex-start;
+      background: rgb(0,0,0);
+      background: linear-gradient(90deg, rgba(0, 0, 0, 0.9) 0%, rgba(20, 20, 20, 0.9) 15%, rgba(83, 100, 141, 0) 100%);
+      bottom: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      left: 0;
+      padding: 0 5%;
+      position: absolute;
+      right: 0;
+      top: 0;
+      z-index: 2;
+      .titulo {
+        h2 {
+          color: $font-primary;
+          font-size: 42px;
+          font-weight: $font-black;
+          @include tablet600 {
+            font-size: 70px;
+          }
+        }
+      }
+      .timing {
+        span {
+          color: $font-primary;
+        }
+      }
+      .descripcion {
+        margin: 32px 0;
+        width: 100%;
+        @include tablet600 {
+          width: 600px;
+        }
+        p {
+          color: $font-primary;
+          margin-bottom: 0;
+        }
+      }
+      .info {
+        width: 100%;
+        @include tablet600 {
+          width: 600px;
+        }
+        p {
+          color: $font-primary;
+          margin-bottom: 7px;
+          strong {
+            color: $font-strong;
+            font-weight: $font-bold;
+          }
+        }
+      }
+      .cta {
+        margin-top: 28px;
+        a {
+          align-items: center;
+          background-color: $font-strong;
+          border: 2px solid $font-strong;
+          color: $font-primary;
+          display: flex;
+          font-weight: $font-bold;
+          padding: 14px 21px;
+          text-transform: uppercase;
+          transition: .35s ease;
+          i {
+            margin-right: 14px;
+          }
+          &:hover {
+            background-color: $font-primary;
+            border: 2px solid $font-primary;
+            color: $font-strong;
+          }
+        }
+      }
+      .playtrailer {
+        display: none;
+        margin-top: 28px;
+        position: relative;
+        z-index: 3;
+        @include tablet600 {
+          display: block;
+        }
+        @include laptop1200 {
+          margin-top: 0;
+          position: absolute;
+          right: 15%;
+          top: 50%;
+          transform: translateY(-50%);
+        }
+        a {
+          align-items: center;
+          color: white;
+          display: flex;
+          font-size: 20px;
+          font-weight: $font-regular;
+          letter-spacing: 3.5px;
+          text-transform: uppercase;
+          transition: .35s ease;
+          i {
+            font-size: 91px;
+            margin-right: 21px;
+          }
+          &:hover,
+          &:active {
+            color: $font-strong;
+          }
+        }
+      }
+    }
+  }
+}
+
+.slider-ultimos,
+.slider-estrenos,
+.slider-recomendados {
+  margin: 0 15px;
+}

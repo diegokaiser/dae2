@@ -1,0 +1,55 @@
+/****************MOBILE DEVICES*****************/
+/****************TABLET DEVICES*****************/
+/****************DESKTOPS DEVICES*****************/
+/****************REGLAS POR ALTOS*****************/
+/****************MOBILE LANDSCAPE*****************/
+/****************TABLET LANDSCAPE*****************/
+/****************TABLET PORTRAIT*****************/
+/****************ONLY IE10+*****************/
+.banner-destacado {
+  height: 100vh;
+  position: relative;
+  width: 100%; }
+  .banner-destacado .img {
+    bottom: 0;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    z-index: 1; }
+    .banner-destacado .img img {
+      height: 100%;
+      width: auto; }
+  .banner-destacado .contenido {
+    -webkit-box-align: start;
+    -webkit-align-items: flex-start;
+    -moz-box-align: start;
+    -ms-flex-align: start;
+    align-items: flex-start;
+    background: black;
+    background: -webkit-gradient(linear, left top, right top, from(rgba(0, 0, 0, 0.7)), color-stop(35%, rgba(0, 0, 0, 0)), to(rgba(0, 0, 0, 0.45)));
+    background: linear-gradient(90deg, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0) 35%, rgba(0, 0, 0, 0.45) 100%);
+    bottom: 0;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: row;
+    -moz-box-orient: horizontal;
+    -moz-box-direction: normal;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+    -moz-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    left: 0;
+    margin: 0 5%;
+    position: absolute;
+    right: 0;
+    top: 0;
+    z-index: 2; }

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!-- metas -->
+    <!-- styles -->
+    <title>Title</title>
+</head>
+<body>
+    <!-- header -->
+    <div class="bkg_video">
+        <video autoplay loop poster="images/blackwidow_banner-dest.webp">
+            <source src="images/blackwidow_banner-dest.webm">
+        </video>
+    </div>
+    <div class="content">
+        <div class="form">
+            <form action="" method="post">
+                <h2>Accede a tu cuenta</h2>
+                <div class="form-group">
+                    <label for="correo">Correo electrónico</label>
+                    <input type="text" class="form-control" id="correo" name="correo">
+                </div>
+                <div class="form-group">
+                    <label for="contrasena">Contraseña:</label>
+                    <input type="password" class="form-control" id="contrasena" name="contrasena">
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-success btn-block">Iniciar Sesión</button>
+                </div>
+                <div class="form-group mt-4">
+                    <p>Sí no estás registrado, puedes:</p>
+                </div>
+                <div class="form-group">
+                    <a th:href="@{user/create}" class="btn btn-primary btn-block">Crear cuenta</a>
+                </div>
+            </form>
+        </div>
+    </div>
+    <!-- footer -->
+    <!-- scripts -->
+</body>
+</html>

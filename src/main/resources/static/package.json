@@ -1,0 +1,30 @@
+{
+  "name": "servicioEntradas0",
+  "version": "1.0.0",
+  "description": "Compilador de sass a css",
+  "main": "gulpfile.js",
+  "dependencies": {
+    "gulp": "^4.0.2",
+    "gulp-autoprefixer": "^7.0.1",
+    "gulp-sass": "^4.1.0",
+    "node-sass": "^5.0.0"
+  },
+  "devDependencies": {
+    "gulp-concat": "^2.6.1"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "browserslist": [
+    "last 2 versions",
+    "ie 8",
+    "ie 9",
+    "> 1%",
+    "Firefox >= 20",
+    "Opera 12.1",
+    "iOS 7"
+  ],
+  "keywords": [],
+  "author": "Grupo 1",
+  "license": "ISC"
+}
