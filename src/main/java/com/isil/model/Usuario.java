@@ -20,4 +20,9 @@ public class Usuario {
     private String created_at;
     private String updated_at;
     private String deleted_at;
+
+    // idTipoUsuario
+    // 1 = Cliente
+    // 2 = Admin
+    // 3 = Superadmin
 }

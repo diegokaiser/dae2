@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" >
+<head>
+  <meta charset="UTF-8">
+  <!-- metas -->
+  <!-- styles -->
+  <title>Title</title>
+</head>
+<body>
+  <!-- header -->
+  <!-- preloader -->
+  <div class="bkg_video">
+    <video autoplay loop poster="images/blackwidow_banner-dest.webp">
+      <source src="images/blackwidow_banner-dest.webm">
+    </video>
+  </div>
+  <div class="content">
+    <div class="form">
+      <form action="" method="post">
+        <div class="form-group pt-5">
+          <h4 class="text-white text-center mt-3">¡Hola!</h4>
+          <p class="text-center mt-3">Necesitamos validar tu cuenta, por favor ingresa el código de verificación que te enviamos a tu correo.</p>
+        </div>
+        <div class="form-group pt-4">
+          <label for="authcode">Código de verificación:</label>
+          <input type="text" class="form-control" id="authcode" name="authcode">
+        </div>
+        <div class="form-group">
+          <button id="verificar" type="submit" class="btn btn-primary btn-block my-4">Validar cuenta</button>
+        </div>
+      </form>
+    </div>
+  </div>
+  <!-- footer -->
+  <!-- scripts -->
+</body>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" >
+<head>
+  <meta charset="UTF-8">
+  <!-- metas -->
+  <!-- styles -->
+  <title>Registro | Estrenos Hoy</title>
+</head>
+<body>
+  <!-- header -->
+  <!-- preloader -->
+  <div class="bkg_video">
+    <video autoplay loop poster="images/blackwidow_banner-dest.webp">
+      <source src="images/blackwidow_banner-dest.webm">
+    </video>
+  </div>
+  <div class="content">
+    <div class="form">
+      <form action="" method="post">
+        <h2>Registrarse</h2>
+        <div class="form-group pt-4">
+          <label for="nombre">Nombre:</label>
+          <input type="text" class="form-control" id="nombre" name="nombre">
+        </div>
+        <div class="form-group">
+          <label for="apellido">Apellido:</label>
+          <input type="text" class="form-control" id="apellido" name="apellido">
+        </div>
+        <div class="form-group">
+          <label for="tipoDocumento">Tipo de Documento de Identidad:</label>
+          <select class="form-control" name="tipoDocumento" id="tipoDocumento">
+            <option value="0">Seleccionar</option>
+            <option value="1">DNI</option>
+            <option value="2">C.E</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="numeroDocumento">Documento de Identidad:</label>
+          <input type="text" class="form-control" id="numeroDocumento" name="numeroDocumento">
+        </div>
+        <div class="form-group">
+          <label for="correo">Correo electrónico:</label>
+          <input type="text" class="form-control" id="correo" name="correo">
+        </div>
+        <div class="form-group">
+          <label for="contrasena">Contraseña:</label>
+          <input type="password" class="form-control" id="contrasena" name="contrasena">
+        </div>
+        <div class="form-group">
+          <label for="recontrasena">Confirmar contraseña:</label>
+          <input type="password" class="form-control" id="recontrasena" name="recontrasena">
+        </div>
+        <div class="form-group">
+          <button id="send" type="submit" class="btn btn-primary btn-block my-4">Registrarse</button>
+        </div>
+        <div class="form-group mt-4">
+          <p>Sí estás registrado, puedes:</p>
+        </div>
+        <div class="form-group">
+          <a href="" class="btn btn-success btn-block">Iniciar Sesión</a>
+        </div>
+      </form>
+    </div>
+  </div>
+  <!-- footer -->
+  <!-- scripts -->
+</body>
+</html>

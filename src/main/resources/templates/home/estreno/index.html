@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" >
+<head>
+  <meta charset="UTF-8">
+  <!-- metas -->
+  <!-- styles -->
+  <title>| Estrenos Hoy</title>
+</head>
+<body>
+  <!-- header -->
+  <div class="content">
+    <div class="banner-destacado">
+      <div class="img">
+        <img src="" alt="<%=pelicula.getNombre()%>">
+      </div>
+
+      <div class="contenido">
+        <div class="titulo">
+          <h2><%=pelicula.getNombre()%></h2>
+        </div>
+        <div class="timing">
+          <span><i class="far fa-clock"></i> <%=pelicula.getDuracion()%></span>
+        </div>
+        <div class="descripcion">
+          <p>
+            <%=pelicula.getDescripcion()%>
+          </p>
+        </div>
+        <div class="info">
+          <p>
+            <strong>Protagonizan: </strong><%=pelicula.getProtagonistas()%>
+          </p>
+          <p>
+            <strong>Género: </strong><%=pelicula.getGenero()%>
+          </p>
+        </div>
+        <div class="cta">
+
+          <a href="<%=request.getContextPath()%>/EntradaController?processing=seleccionarEntrada&idPelicula=<%=pelicula.getIdPelicula()%>" data-id="<%=pelicula.getIdPelicula()%>">
+            <i class="fas fa-play"></i>Comprar entradas
+          </a>
+          <a href="<%=request.getContextPath()%>/EntradaController?processing=crearAviso&idPelicula=<%=pelicula.getIdPelicula()%>" data-id="<%=pelicula.getIdPelicula()%>">
+            <i class="far fa-clock"></i>
+            <!--<strong>Faltan: </strong>-->
+            <span id="fechaEstreno" data-estreno="<%=pelicula.getFechaEstreno()%>" data-pri="" data-sec=""></span>
+          </a>
+        </div>
+        <div class="playtrailer">
+          <a href="<%=pelicula.getTrailer()%>" target="_blank">
+            <i class="far fa-play-circle"></i>
+            Ver trailer
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- footer -->
+  <!-- scripts -->
+</body>
+</html>
