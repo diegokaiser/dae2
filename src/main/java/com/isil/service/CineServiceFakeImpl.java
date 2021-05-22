@@ -33,17 +33,17 @@ public class CineServiceFakeImpl implements CineService {
 
     @Override
     public void update(Cine cine) {
-        Cine currentStudent = read(cine.getIdCine().toString());
-        if (currentStudent != null){
-            int index = cines.indexOf(currentStudent);
+        Cine currentCine = read(cine.getIdCine().toString());
+        if (currentCine != null){
+            int index = cines.indexOf(currentCine);
             cines.set(index, cine);
         }
     }
 
     @Override
-    public void delete(String documentNumber) {
-        Cine currentStudent = read(documentNumber);
-        cines.remove(currentStudent);
+    public void delete(String idCine) {
+        Cine currentCine = read(idCine);
+        cines.remove(currentCine);
     }
 
     @Override
