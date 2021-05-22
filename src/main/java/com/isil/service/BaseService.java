@@ -1,12 +1,12 @@
 package com.isil.service;
 
 import java.util.List;
+import java.util.Optional;
 
-public interface BaseService<C, ID> {
-    void create(C c);
-    C read(ID id);
-    void update(C c);
-    void delete(ID id);
+public interface BaseService<C, K> {
+    public Optional<C> findById(K k);
+    public Optional<List<C>> findAll();
 
-    List<C> all();
+    public C saveOrUpdate(C c);
+    public boolean deleteById(K k);
 }
