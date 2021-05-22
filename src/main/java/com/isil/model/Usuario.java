@@ -5,10 +5,25 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.format.annotation.DateTimeFormat;
 
+import javax.persistence.*;
+
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
+@Entity
+@Table(name = "tbl_usuario")
 public class Usuario {
+    private Long id;
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    @Id
+    public Long getId() {
+        return id;
+    }
+    /*
     private Integer idUsuario;
     private String nombre;
     private String apellido;
@@ -29,4 +44,6 @@ public class Usuario {
     // 1 = Cliente
     // 2 = Admin
     // 3 = Superadmin
+
+     */
 }

@@ -1,3 +1,4 @@
+/*
 create table usuario (
     idUsuario identity primary key,
     nombre varchar(40) not null,
@@ -121,3 +122,4 @@ create table usuarioentrada (
 
 
 
+*/
