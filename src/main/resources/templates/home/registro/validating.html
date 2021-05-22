@@ -2,16 +2,34 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org" >
 <head>
   <meta charset="UTF-8">
-  <!-- metas -->
-  <!-- styles -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <link rel="stylesheet" href="https://estrenoshoyb.s3.amazonaws.com/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://estrenoshoyb.s3.amazonaws.com/css/slick.css">
+  <link rel="stylesheet" href="https://estrenoshoyb.s3.amazonaws.com/css/style.css">
+  <link rel="stylesheet" type="text/css" href="https://estrenoshoyb.s3.amazonaws.com/fontawesome/css/all.min.css">
   <title>Title</title>
 </head>
 <body>
-  <!-- header -->
+  <header>
+    <nav class="navbar navbar-expand-lg navbar-light p-0">
+      <a class="navbar-brand" href="/home/index.jsp">
+        <img src="https://estrenoshoyb.s3.amazonaws.com/images/logo.svg " alt=""><span>Solo estrenos</span>
+      </a>
+      <ul class="navbar-nav ml-auto">
+        <li>
+          <p>Bienvenido, Usuario!</p>
+        </li>
+        <li>
+          <a href="">Logout</a>
+        </li>
+      </ul>
+    </nav>
+  </header>
   <!-- preloader -->
   <div class="bkg_video">
-    <video autoplay loop poster="images/blackwidow_banner-dest.webp">
-      <source src="images/blackwidow_banner-dest.webm">
+    <video autoplay loop>
+      <source src="https://estrenoshoyb.s3.amazonaws.com/images/blackwidow_banner-dest.webm">
     </video>
   </div>
   <div class="content">
@@ -31,7 +49,24 @@
       </form>
     </div>
   </div>
-  <!-- footer -->
-  <!-- scripts -->
+  <footer>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col">
+          <p>
+            &copy; SOLO ESTRENOS.
+          </p>
+          <p>
+            All Rigths Reserved.
+          </p>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <script src="https://estrenoshoyb.s3.amazonaws.com/js/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://estrenoshoyb.s3.amazonaws.com/js/slick.min.js"></script>
+  <script src="https://estrenoshoyb.s3.amazonaws.com/js/popper.min.js"></script>
+  <script src="https://estrenoshoyb.s3.amazonaws.com/js/bootstrap.min.js"></script>
+  <script src="https://estrenoshoyb.s3.amazonaws.com/js/all.js"></script>
 </body>
 </html>
