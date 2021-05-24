@@ -6,44 +6,58 @@ import lombok.NoArgsConstructor;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
 @Entity
-@Table(name = "tbl_usuario")
+@Table(name = "Usuario")
 public class Usuario {
+
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id
+    @Column(name = "idUsuario")
     private Long id;
 
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    @Id
-    public Long getId() {
-        return id;
-    }
-    /*
-    private Integer idUsuario;
+    @Column(name = "nombre")
     private String nombre;
+
+    @Column(name = "apellido")
     private String apellido;
+
+    @Column(name = "correo")
     private String correo;
+
+    @Column(name = "contrasena")
     private String contrasena;
+
+    @Column(name = "tipoDocumento")
     private Integer tipoDocumento;
+
+    @Column(name = "numeroDocumento")
     private String numeroDocumento;
+
+    @Column(name = "idTipoUsuario")
     private Integer idTipoUsuario;
-    private Integer status;
+
+    @Column(name = "estado")
+    private Integer estado;
+
     @DateTimeFormat(pattern = "dd-MM-yyyy")
-    private String created_at;
+    @Column(name = "fechaRegistro")
+    private LocalDate fechaRegistro;
+
     @DateTimeFormat(pattern = "dd-MM-yyyy")
-    private String updated_at;
+    @Column(name = "fechaModificacion")
+    private LocalDate fechaModificacion;
+
     @DateTimeFormat(pattern = "dd-MM-yyyy")
-    private String deleted_at;
+    @Column(name = "admiModificacion")
+    private LocalDate admiModificacion;
 
     // idTipoUsuario
     // 1 = Cliente
     // 2 = Admin
     // 3 = Superadmin
-
-     */
 }

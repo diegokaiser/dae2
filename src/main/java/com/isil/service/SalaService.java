@@ -2,6 +2,7 @@ package com.isil.service;
 
 
 import com.isil.model.Sala;
+import com.isil.repository.SalaRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -10,23 +11,33 @@ import java.util.Optional;
 @Service
 public class SalaService implements BaseService<Sala, Long> {
 
+    private final SalaRepository salaRepository;
+
+    public SalaService(SalaRepository salaRepository) {
+        this.salaRepository = salaRepository;
+    }
+
     @Override
-    public Optional<Sala> findById(Long aLong) {
-        return Optional.empty();
+    public Optional<Sala> findById(Long id) {
+        return salaRepository.findById(id);
     }
 
     @Override
     public Optional<List<Sala>> findAll() {
-        return Optional.empty();
+        return Optional.of(salaRepository.findAll());
     }
 
     @Override
     public Sala saveOrUpdate(Sala sala) {
-        return null;
+        return salaRepository.save(sala);
     }
 
     @Override
-    public boolean deleteById(Long aLong) {
-        return false;
+    public boolean deleteById(Long id) {
+        return findById(id)
+                .map(sala -> {
+                    salaRepository.delete(sala);
+                    return true;
+                }).orElse(false);
     }
 }

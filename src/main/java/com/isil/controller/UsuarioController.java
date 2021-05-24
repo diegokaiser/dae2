@@ -1,5 +1,7 @@
 package com.isil.controller;
 
+import com.isil.repository.UsuarioRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,10 +14,14 @@ import com.isil.service.UsuarioService;
 public class UsuarioController {
     private final UsuarioService usuarioService;
 
+    @Autowired
+    private UsuarioRepository usuarioRepository;
+
     public UsuarioController(UsuarioService usuarioService) {
         this.usuarioService = usuarioService;
     }
 
+    /* admin usuarios */
     @GetMapping("/admin/usuarios")
     public String usuarios(Model model) {
         usuarioService.findAll().ifPresent(usuarios -> model.addAttribute("usuarios", usuarios));
@@ -45,4 +51,26 @@ public class UsuarioController {
         usuarioService.deleteById(id);
         return "redirect:/admin/usuarios/index";
     }
+
+    /* login */
+    @GetMapping("/home")
+    public String usuariosLogin(@PathVariable Long id, Model model) {
+        usuarioService.findById(id).ifPresent(usuario -> model.addAttribute("usuario", usuario));
+        return "redirect:/home/login/index";
+    }
+
+    /* register */
+    @GetMapping("/registro/usuario")
+    public String usuariosRegister(Model model) {
+        model.addAttribute("usuario", new Usuario());
+        return "/home/registro/index";
+    }
+
+    @PostMapping("/registro/usuario/saving")
+    public String usuariosRegisterSaving(Usuario usuario) {
+        usuarioRepository.save(usuario);
+        return "/home/registro/validating";
+    }
+
+
 }

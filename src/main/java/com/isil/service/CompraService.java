@@ -2,15 +2,42 @@ package com.isil.service;
 
 
 import com.isil.model.Compra;
+import com.isil.repository.CompraRepository;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
-public interface CompraService {
+@Service
+public class CompraService implements BaseService<Compra, Long> {
 
-    void create(Compra compra);
-    Compra read(String idCompra);
-    void update(Compra compra);
-    void delete(String idCompra);
+    private final CompraRepository compraRepository;
 
-    List<Compra> all();
+    public CompraService(CompraRepository compraRepository) {
+        this.compraRepository = compraRepository;
+    }
+
+    @Override
+    public Optional<Compra> findById(Long id) {
+        return compraRepository.findById(id);
+    }
+
+    @Override
+    public Optional<List<Compra>> findAll() {
+        return Optional.of(compraRepository.findAll());
+    }
+
+    @Override
+    public Compra saveOrUpdate(Compra compra) {
+        return compraRepository.save(compra);
+    }
+
+    @Override
+    public boolean deleteById(Long id) {
+        return findById(id)
+                .map(compra -> {
+                    compraRepository.delete(compra);
+                    return true;
+                }).orElse(false);
+    }
 }

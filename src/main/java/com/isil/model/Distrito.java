@@ -4,15 +4,20 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import javax.persistence.*;
+
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
+@Entity
+@Table(name = "Distrito")
 public class Distrito {
-    private Integer idDistrito;
-    private String nombre;
-    private Integer status;
-    private String created_at;
-    private String updated_at;
-    private String deleted_at;
 
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id
+    @Column(name = "idDistrito")
+    private Long idDistrito;
+
+    @Column(name = "Nombre")
+    private String Nombre;
 }
