@@ -52,9 +52,8 @@ public class Usuario {
     @Column(name = "fechaModificacion")
     private LocalDate fechaModificacion;
 
-    @DateTimeFormat(pattern = "dd-MM-yyyy")
     @Column(name = "admiModificacion")
-    private LocalDate admiModificacion;
+    private String admiModificacion;
 
     // idTipoUsuario
     // 1 = Cliente

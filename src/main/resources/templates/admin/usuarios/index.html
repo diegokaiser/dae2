@@ -27,8 +27,8 @@
 
     <div class="container body">
       <div class="main_container">
-        <!-- include side -->
-        <!-- include top -->
+        <div th:replace="admin/fragments/fragments.html :: top"></div>
+        <div th:replace="admin/fragments/fragments.html :: side"></div>
         <div class="right_col" role="main">
           <div class="">
             <div class="page-title">
@@ -60,7 +60,7 @@
                             <tbody>
                               <tr th:each="usuario : ${usuarios}">
                                 <td th:text="${usuario.id}"></td>
-                                <td th:text="${usuario.apellido}, ${usuario.nombre}"></td>
+                                <td th:text="${usuario.apellido} + ', ' + ${usuario.nombre}"></td>
                                 <td th:text="${usuario.correo}"></td>
 
                                 <td th:switch="${usuario.tipoDocumento}">
@@ -96,7 +96,7 @@
             </div>
           </div>
         </div>
-        <!-- include footer -->
+        <footer th:replace="admin/fragments/fragments.html :: footer"></footer>
       </div>
     </div>
 
