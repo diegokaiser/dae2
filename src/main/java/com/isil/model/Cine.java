@@ -26,7 +26,7 @@ public class Cine {
     @Column(name = "estado")
     private Integer estado;
 
-    @Column(name = "idUsuario")
+    @Column(name = "logo")
     private String logo;
 
     @DateTimeFormat(pattern = "dd-MM-yyyy")
