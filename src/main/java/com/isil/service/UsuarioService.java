@@ -16,6 +16,7 @@ public class UsuarioService implements BaseService<Usuario, Long> {
         this.usuarioRepository = usuarioRepository;
     }
 
+
     @Override
     public Optional<Usuario> findById(Long id) {
         return usuarioRepository.findById(id);
@@ -40,7 +41,12 @@ public class UsuarioService implements BaseService<Usuario, Long> {
                 }).orElse(false);
     }
 
-    public boolean login(Long id) {
-        return true;
+    public Optional<Usuario> findByCorreoAndContrasena(String correo, String contrasena) {
+        return usuarioRepository.findByCorreoAndContrasena(correo,contrasena);
     }
+
+    //public boolean login(Long id) {
+    //    return true;
+   // }
+
 }

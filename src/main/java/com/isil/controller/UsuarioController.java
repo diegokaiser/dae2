@@ -53,10 +53,9 @@ public class UsuarioController {
     }
 
     /* login */
-    @GetMapping("/home")
-    public String usuariosLogin(@PathVariable Long id, Model model) {
-        usuarioService.findById(id).ifPresent(usuario -> model.addAttribute("usuario", usuario));
-        return "redirect:/home/login/index";
+    @PostMapping("/home/login")
+    public String usuariosLogin() {
+        return "/home/login/index";
     }
 
     /* register */

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" >
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <link rel="stylesheet" href="https://estrenoshoyb.s3.amazonaws.com/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://estrenoshoyb.s3.amazonaws.com/css/slick.css">
+  <link rel="stylesheet" href="https://estrenoshoyb.s3.amazonaws.com/css/style.css">
+  <link rel="stylesheet" type="text/css" href="https://estrenoshoyb.s3.amazonaws.com/fontawesome/css/all.min.css">
+  <title>Acceso de usuarios | Solo Estrenos</title>
+</head>
+<body>
+  <!-- header -->
+  <header class="headertop">
+    <nav class="navbar navbar-expand-lg navbar-light p-0">
+      <a class="navbar-brand" href="/home/index.jsp">
+        <img src="https://estrenoshoyb.s3.amazonaws.com/images/logo.svg " alt=""><span>Solo estrenos</span>
+      </a>
+    </nav>
+  </header>
+
+  <div class="bkg_video">
+    <video autoplay loop>
+      <source src="https://estrenoshoyb.s3.amazonaws.com/images/blackwidow_banner-dest.webm">
+    </video>
+  </div>
+  <div class="content">
+    <div class="form">
+      <form action="#" method="post" th:action="@{/home/login}">
+        <h2>Accede a tu cuenta</h2>
+        <div class="form-group">
+          <label for="correo">Correo electrónico</label>
+          <input type="text" class="form-control" id="correo" name="correo" >
+        </div>
+        <div class="form-group">
+          <label for="contrasena">Contraseña:</label>
+          <input type="password" class="form-control" id="contrasena" name="contrasena" >
+        </div>
+        <div class="form-group">
+          <button type="submit" class="btn btn-success btn-block">Iniciar Sesión</button>
+        </div>
+        <div class="form-group mt-4">
+          <p>Sí no estás registrado, puedes:</p>
+        </div>
+        <div class="form-group">
+          <a th:href="@{user/create}" class="btn btn-primary btn-block">Crear cuenta</a>
+        </div>
+      </form>
+    </div>
+  </div>
+  <footer>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col">
+          <p>
+            &copy; SOLO ESTRENOS.
+          </p>
+          <p>
+            All Rigths Reserved.
+          </p>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <script src="https://estrenoshoyb.s3.amazonaws.com/js/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://estrenoshoyb.s3.amazonaws.com/js/slick.min.js"></script>
+  <script src="https://estrenoshoyb.s3.amazonaws.com/js/popper.min.js"></script>
+  <script src="https://estrenoshoyb.s3.amazonaws.com/js/bootstrap.min.js"></script>
+  <script src="https://estrenoshoyb.s3.amazonaws.com/js/all.js"></script>
+  <!-- scripts -->

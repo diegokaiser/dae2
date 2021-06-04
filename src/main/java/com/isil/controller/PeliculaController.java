@@ -45,4 +45,10 @@ public class PeliculaController {
     public String peliculasDelete(@PathVariable Long id, Model model) {
         return "redirect:/admin/estrenos/index";
     }
+
+    @GetMapping("/peliculasHome")
+    public String peliculasHome(Model model) {
+        peliculaService.findAll().ifPresent(peliculas -> model.addAttribute("peliculasHome", peliculas));
+        return "home/login/index";
+    }
 }

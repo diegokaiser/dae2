@@ -7,6 +7,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.List;
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -40,4 +41,7 @@ public class Cine {
     @DateTimeFormat(pattern = "dd-MM-yyyy")
     @Column(name = "admiModificacion")
     private LocalDate admiModificacion;
+
+   // @OneToMany(mappedBy = "company",fetch = FetchType.LAZY,cascade=CascadeType.ALL)
+  //  private List<Employee> employees;
 }
