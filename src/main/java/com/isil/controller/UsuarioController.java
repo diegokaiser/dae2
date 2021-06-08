@@ -35,14 +35,14 @@ public class UsuarioController {
     }
 
     @PostMapping("/admin/usuarios/save")
-    public String usuariosSave(Usuario usuario) {
-        usuarioService.saveOrUpdate(usuario);
-        return "redirect:/admin/usuarios/index";
+    public String usuariosSave(Usuario usuarioEdit) {
+        usuarioService.saveOrUpdate(usuarioEdit);
+        return "redirect:/admin/usuarios";
     }
 
     @GetMapping("/admin/usuarios/edit/{id}")
     public String usuariosEdit(@PathVariable Long id, Model model) {
-        usuarioService.findById(id).ifPresent(usuario -> model.addAttribute("usuario", usuario));
+        usuarioService.findById(id).ifPresent(usuario -> model.addAttribute("usuarioEdit", usuario));
         return "admin/usuarios/add";
     }
 

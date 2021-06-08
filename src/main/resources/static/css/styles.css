@@ -3,9 +3,6 @@
     box-sizing: border-box;   
 }
 
-body{
-    
-}
 
 header{
   height: 200px;
@@ -26,8 +23,12 @@ section{
 footer{
   height: 200px;
   width: 100%;
-  color:#ecf0f1;
+  color: #ecf0f1;
   background-color:black;   
   text-align: center;
   padding-top: 50px;       
+}
+
+.padded {
+    padding: 0 150px 80px 150px !important;
 }
