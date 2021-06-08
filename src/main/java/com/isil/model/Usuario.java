@@ -60,3 +60,6 @@ public class Usuario {
     // 2 = Admin
     // 3 = Superadmin
 }
+
+
+
