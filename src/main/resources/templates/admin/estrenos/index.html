@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" >
   <head>
     <meta charset="UTF-8">
-    <title>Cines | Admin Area</title>
+    <title>Estrenos | Admin Area</title>
     <!-- Bootstrap -->
     <link href="//cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css" rel="stylesheet">
     <link href="https://estrenoshoyb.s3.amazonaws.com/admin/css/bootstrap.min.css" rel="stylesheet">
@@ -24,7 +24,6 @@
     <link href="https://estrenoshoyb.s3.amazonaws.com/admin/css/custom.min.css" rel="stylesheet">
   </head>
   <body class="nav-md">
-
     <div class="container body">
       <div class="main_container">
         <div th:replace="admin/fragments/fragments.html :: top"></div>
@@ -33,7 +32,7 @@
           <div class="">
             <div class="page-title">
               <div class="title_left">
-                <h3>Cines registrados</h3>
+                <h3>Estrenos registrados</h3>
               </div>
             </div>
             <div class="clearfix"></div>
@@ -42,7 +41,7 @@
                 <div class="x_panel">
                   <div class="x_content">
                     <div class="row">
-                      <div class="col-sm-12" th:switch="cines">
+                      <div class="col-sm-12" th:switch="peliculas">
                         <div class="card-box table-responsive" th:case="*">
 
                           <table id="datatable" class="table table-striped table-bordered" style="width: 100%">
@@ -50,31 +49,68 @@
                               <tr>
                                 <th scope="col">ID</th>
                                 <th scope="col">Nombre</th>
-                                <th scope="col">Dirección</th>
-                                <th scope="col">Distrito</th>
+                                <th scope="col">Duración</th>
+                                <th scope="col">Fecha de Estreno</th>
+                                <th scope="col">País</th>
+                                <th scope="col">Subtitulos</th>
+                                <th scope="col">Doblada</th>
+                                <th scope="col">Descripción</th>
+                                <th scope="col">Género</th>
+                                <th scope="col">Trailer</th>
+                                <th scope="col">Recomendada</th>
+                                <th scope="col">Portadas</th>
+                                <th scope="col">Destacada</th>
+                                <th scope="col">Protagonistas</th>
+
                                 <th scope="col">Estado</th>
                                 <th scope="col">Acciones</th>
                               </tr>
                             </thead>
                             <tbody>
-                              <tr th:each="cine : ${cines}">
-                                <td th:text="${cine.id}"></td>
-                                <td th:text="${cine.nombre}"></td>
-                                <td th:text="${cine.direccion}"></td>
-                                <td th:text="${cine.distrito}"></td>
-                                <td th:switch="${cine.estado}">
+                              <tr th:each="estreno : ${peliculas}">
+                                <td th:text="${estreno.id}"></td>
+                                <td th:text="${estreno.nombre}"></td>
+                                <td th:text="${estreno.duracion}"></td>
+                                <td th:text="${estreno.fechaEstreno}"></td>
+                                <td th:text="${estreno.pais}"></td>
+                                <td th:switch="${estreno.subtitulos}">
+                                  <span th:case="1">Sí</span>
+                                  <span th:case="0">No</span>
+                                </td>
+                                <td th:switch="${estreno.doblada}">
+                                  <span th:case="1">Sí</span>
+                                  <span th:case="0">No</span>
+                                </td>
+                                <td th:text="${estreno.descripcion}"></td>
+                                <td th:text="${estreno.genero}"></td>
+                                <td><a th:href="${estreno.trailer}">Ver Trailer</a></td>
+                                <td th:switch="${estreno.recomendada}">
+                                  <span th:case="1">Sí</span>
+                                  <span th:case="0">No</span>
+                                </td>
+                                <td>
+                                  <span th:text="${estreno.portada}"></span>
+                                  <span th:text="${estreno.portadaDestacada}"></span>
+                                </td>
+                                <td th:switch="${estreno.destacada}">
+                                  <span th:case="1">Sí</span>
+                                  <span th:case="0">No</span>
+                                </td>
+                                <td th:text="${estreno.protagonistas}"></td>
+
+                                <td th:switch="${estreno.estado}">
                                   <span th:case="1">Validado</span>
                                   <span th:case="0">No validado</span>
                                 </td>
 
-                                <td width="140" th:switch="${cine.estado}">
+                                <td width="140" th:switch="${estreno.estado}">
                                   <div class="admin-actions" th:case="1">
-                                    <a th:href="@{/cines/edit/{id} (id = ${cine.id}) }" data-id="${cine.id}" class="btn btn-primary text-left" style="width: 100%;"><i class="fa fa-pencil"></i>&nbsp;&nbsp;Editar</a>
-                                    <a th:if="${cine.estado == 1}" th:href="@{/cines/delete/{id} (id = ${cine.id}) }" data-id="${cine.id}" class="btn btn-danger text-left" style="width: 100%;"><i class="fa fa-pencil"></i>&nbsp;&nbsp;Deshabilitar</a>
+                                    <a th:href="@{/estrenos/edit/{id} (id = ${estreno.id}) }" data-id="${estreno.id}" class="btn btn-primary text-left" style="width: 100%;"><i class="fa fa-pencil"></i>&nbsp;&nbsp;Editar</a>
+                                    <a th:if="${estreno.estado == 1}" th:href="@{/estrenos/delete/{id} (id = ${estreno.id}) }" data-id="${estreno.id}" class="btn btn-danger text-left" style="width: 100%;"><i class="fa fa-pencil"></i>&nbsp;&nbsp;Deshabilitar</a>
                                   </div>
                                   <div class="admin-actions" th:case="0">
-                                    <a th:href="@{/cines/edit/{id} (id = ${cines.id}) }" data-id="${cine.id}" class="btn btn-primary text-left" style="width: 100%;"><i class="fa fa-pencil"></i>&nbsp;&nbsp;Editar</a>
-                                    <a th:unless="${cine.estado == 1}" th:href="@{/cines/enable/{id} (id = ${cine.id}) }" data-id="${cine.id}" class="btn btn-success text-left" style="width: 100%;"><i class="fa fa-check"></i>&nbsp;&nbsp;Habilitar</a>
+                                    <a th:href="@{/estrenos/edit/{id} (id = ${estreno.id}) }" data-id="${estreno.id}" class="btn btn-primary text-left" style="width: 100%;"><i class="fa fa-pencil"></i>&nbsp;&nbsp;Editar</a>
+                                    <a th:unless="${estreno.estado == 1}" th:href="@{/estrenos/enable/{id} (id = ${estreno.id}) }" data-id="${estreno.id}" class="btn btn-success text-left" style="width: 100%;"><i class="fa fa-check"></i>&nbsp;&nbsp;Habilitar</a>
                                   </div>
                                 </td>
                               </tr>

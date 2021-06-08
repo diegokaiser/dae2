@@ -49,4 +49,8 @@ public class Entrada {
     @DateTimeFormat(pattern = "dd-MM-yyyy")
     @Column(name = "admiModificacion")
     private LocalDate admiModificacion;
+
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinColumn(name = "id", insertable = false, updatable = false)
+    private Entrada entrada;
 }

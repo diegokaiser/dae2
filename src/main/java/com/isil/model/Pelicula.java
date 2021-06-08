@@ -7,6 +7,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.List;
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -18,7 +19,7 @@ public class Pelicula {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     @Column(name = "idPelicula")
-    private Long idPelicula;
+    private Long id;
 
     @Column(name = "nombre")
     private String nombre;
@@ -26,6 +27,7 @@ public class Pelicula {
     @Column(name = "duracion")
     private String duracion;
 
+    @DateTimeFormat(pattern = "dd-MM-yyyy")
     @Column(name = "fechaEstreno")
     private LocalDate fechaEstreno;
 
@@ -76,9 +78,13 @@ public class Pelicula {
     @Column(name = "fechaModificacion")
     private LocalDate fechaModificacion;
 
-    @DateTimeFormat(pattern = "dd-MM-yyyy")
     @Column(name = "admiModificacion")
-    private LocalDate admiModificacion;
+    private String admiModificacion;
 
+    @OneToMany(mappedBy = "entrada", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private List<Entrada> entradas;
 
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinColumn(name = "id", insertable = false, updatable = false)
+    private Cine cine;
 }

@@ -16,6 +16,7 @@ public class CineService implements BaseService<Cine, Long> {
         this.cineRepository = cineRepository;
     }
 
+
     @Override
     public Optional<Cine> findById(Long id) {
         return cineRepository.findById(id);
