@@ -43,8 +43,8 @@
             <div class="page-title">
               <div class="title_left">
                 <h3>Usuarios registrados</h3>
-
               </div>
+
             </div>
             <div class="clearfix"></div>
 
@@ -84,16 +84,14 @@
                                   <span th:case="0">No validado</span>
                                 </td>
 
-
-
                                 <td width="140" th:switch="${usuario.estado}">
                                   <div class="admin-actions" th:case="1">
                                     <a th:href="@{/admin/usuarios/edit/{id} (id = ${usuario.id}) }"  class="btn btn-primary text-left" style="width: 100%;" > <i class="fas fa-pen"></i>&nbsp;&nbsp;Editar</a>
-                                    <a th:if="${usuario.estado == 1}" th:href="@{/usuarios/delete/{id} (id = ${usuario.id}) }"  class="btn btn-danger text-left" style="width: 100%;"> <i class="fas fa-times"></i> </i>&nbsp;&nbsp;Deshabilitar</a>
+                                    <a  th:href="@{'/admin/usuarios/estadoUsuario/'+${usuario.id}+'/0' }"  class="btn btn-danger text-left" style="width: 100%;"> <i class="fas fa-times"></i> </i>&nbsp;&nbsp;Deshabilitar</a>
                                   </div>
                                   <div class="admin-actions" th:case="0">
                                     <a th:href="@{/admin/usuarios/edit/{id} (id = ${usuario.id}) }"  class="btn btn-primary text-left" style="width: 100%;"> <i class="fas fa-pen"></i>&nbsp;&nbsp;Editar</a>
-                                    <a th:unless="${usuario.estado == 1}" th:href="@{/usuarios/enable/{id} (id = ${usuario.id}) }"  class="btn btn-success text-left" style="width: 100%;"><i class="fa fa-check"></i>&nbsp;&nbsp;Habilitar</a>
+                                    <a  th:href="@{'/admin/usuarios/estadoUsuario/'+${usuario.id}+'/1' }"  class="btn btn-success text-left" style="width: 100%;"><i class="fa fa-check"></i>&nbsp;&nbsp;Habilitar</a>
                                   </div>
                                 </td>
                               </tr>

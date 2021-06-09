@@ -71,5 +71,29 @@ public class UsuarioController {
         return "/home/registro/validating";
     }
 
+    @GetMapping("/admin/usuarios/estadoUsuario/{id}/{estado}")
+    public String estadoUsuario(@PathVariable Long id,@PathVariable Integer estado) {
+        usuarioService.estadoUsuario(id,estado);
+        return "redirect:/admin/usuarios";
+
+    }
+
+/*    @GetMapping("/admin/usuarios/estadoUsuario/{estado}/{id}")
+    public String estadoUsuario(@PathVariable Long estado,Long id) {
+        System.out.println("Si toy we 1");
+        usuarioService.editarUsuario(estado,id);
+        System.out.println("Si toy we 2");
+        return "redirect:/admin/usuarios/index";
+
+    }*/
+
+
+
+
+
+/*    @PostMapping("/admin/usuarios/deshabilitarEstado")
+    public void deshabilitarEstado(Integer estado,Integer id) {
+        usuarioService.editarUsuario(estado,id);
+    }*/
 
 }

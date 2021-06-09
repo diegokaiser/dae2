@@ -45,8 +45,14 @@ public class UsuarioService implements BaseService<Usuario, Long> {
         return usuarioRepository.findByCorreoAndContrasena(correo,contrasena);
     }
 
-    //public boolean login(Long id) {
-    //    return true;
-   // }
+   public boolean estadoUsuario(Long id,Integer estado){
+       return findById(id).map(
+               usuario -> {
+                   usuario.setEstado(estado);
+                   saveOrUpdate(usuario);
+                   return true;
+               }).orElse(false);
+   }
+
 
 }
