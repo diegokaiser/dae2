@@ -12,29 +12,29 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
-@Entity
-@Table(name = "Sala")
-public class Sala {
+@Entity(name="CineSede")
+@Table(name = "CineSede")
+public class CineSede {
 
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
-    @Column(name = "idSala")
-    private Long idSala;
-
-    @Column(name = "numero")
-    private Integer numero;
-
     @Column(name = "idCineSede")
-    private Integer idCineSede;
+    private Long id;
 
-    @Column(name = "capacidad")
-    private Integer capacidad;
+    @Column(name = "nombre")
+    private String nombre;
 
-    @Column(name = "tipoSala")
-    private String tipoSala;
+    @Column(name = "direccion")
+    private String direccion;
 
     @Column(name = "estado")
     private Integer estado;
+
+    @Column(name = "idDistrito")
+    private Integer distrito;
+
+    @Column(name = "idCine")
+    private Integer idCine;
 
     @DateTimeFormat(pattern = "dd-MM-yyyy")
     @Column(name = "fechaRegistro")
@@ -44,15 +44,16 @@ public class Sala {
     @Column(name = "fechaModificacion")
     private LocalDate fechaModificacion;
 
-    @DateTimeFormat(pattern = "dd-MM-yyyy")
     @Column(name = "admiModificacion")
-    private LocalDate admiModificacion;
+    private String admiModificacion;
 
-    @OneToMany(mappedBy = "sala", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    private List<Entrada> entradas;
+
 
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JoinColumn(name = "idCineSede", insertable = false, updatable = false)
-    private CineSede cineSede;
+    @JoinColumn(name = "idCine", insertable = false, updatable = false)
+    private Cine cine;
+
+    @OneToMany(mappedBy = "cineSede", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private List<Sala> sala;
 
 }

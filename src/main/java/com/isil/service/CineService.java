@@ -40,4 +40,12 @@ public class CineService implements BaseService<Cine, Long> {
                     return true;
                 }).orElse(false);
     }
+    public boolean estadoCine(Long id,Integer estado){
+        return findById(id).map(
+                cine -> {
+                    cine.setEstado(estado);
+                    saveOrUpdate(cine);
+                    return true;
+                }).orElse(false);
+    }
 }

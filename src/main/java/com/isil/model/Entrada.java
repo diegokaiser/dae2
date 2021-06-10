@@ -7,6 +7,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.List;
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -48,9 +49,21 @@ public class Entrada {
 
     @DateTimeFormat(pattern = "dd-MM-yyyy")
     @Column(name = "admiModificacion")
-    private LocalDate admiModificacion;
+    private String admiModificacion;
+
+ /*   @OneToMany(mappedBy="entrada", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private List<Pelicula> peliculas ;*/
+
 
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinColumn(name = "idPelicula", insertable = false, updatable = false)
+    private Pelicula pelicula;
+
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinColumn(name = "idSala", insertable = false, updatable = false)
+    private Sala sala;
+
+/*    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "id", insertable = false, updatable = false)
-    private Entrada entrada;
+    private Entrada entrada;*/
 }

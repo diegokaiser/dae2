@@ -1,13 +1,11 @@
 package com.isil.loader;
 
-import com.isil.model.Pelicula;
+import com.isil.model.CineSede;
+import com.isil.repository.CineSedeRepository;
 import com.isil.repository.PeliculaRepository;
 import org.springframework.boot.CommandLineRunner;
-import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Component;
 
-import javax.persistence.Column;
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,10 +14,12 @@ public class PeliculaLoader implements CommandLineRunner {
 
     private final PeliculaRepository peliculaRepository;
 
-    public PeliculaLoader(PeliculaRepository peliculaRepository) {
+    public PeliculaLoader(PeliculaRepository peliculaRepository, CineSedeRepository cineSedeRepository) {
         this.peliculaRepository = peliculaRepository;
+        this.cineSedeRepository = cineSedeRepository;
     }
 
+    private final CineSedeRepository cineSedeRepository;
 
     @Override
     public void run(String... args) throws Exception {
@@ -28,5 +28,18 @@ public class PeliculaLoader implements CommandLineRunner {
         // peliculas.add(new Pelicula(null,"0000000001","ISIL SA",null));
         // peliculas.add(new Pelicula(null,"0000000002","Bodega Don Pepe SA",null));
         // peliculaRepository.saveAll(peliculas);
+        System.out.println("hola qui toy1 ");
+    /*    List<CineSede> cineSedes= new ArrayList<>();
+        cineSedes=cineSedeRepository.findByIdCine(1);
+        cineSedes.forEach(System.out::println);*/
+/*
+        List<CineSede> cinesede=cineSedeRepository.getCineSedeByEstado(1);
+        System.out.println("abeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeer");
+
+        cinesede.forEach(System.out::println);
+        System.out.println("abeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeer");
+
+        System.out.println(cineSedeRepository.getCineSedeByEstado(1));
+        System.out.println("hola qui toy 2 ");*/
     }
 }

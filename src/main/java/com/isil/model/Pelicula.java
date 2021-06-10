@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
+import java.sql.Date;
 import java.time.LocalDate;
 import java.util.List;
 
@@ -29,7 +30,7 @@ public class Pelicula {
 
     @DateTimeFormat(pattern = "dd-MM-yyyy")
     @Column(name = "fechaEstreno")
-    private LocalDate fechaEstreno;
+    private Date fechaEstreno;
 
     @Column(name = "idioma")
     private String idioma;
@@ -81,10 +82,12 @@ public class Pelicula {
     @Column(name = "admiModificacion")
     private String admiModificacion;
 
-    @OneToMany(mappedBy = "entrada", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+
+    @OneToMany(mappedBy = "pelicula", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<Entrada> entradas;
 
-    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JoinColumn(name = "id", insertable = false, updatable = false)
-    private Cine cine;
+
+ /*   @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinColumn(name = "idEntrada", insertable = false, updatable = false)
+    private Entrada entrada;*/
 }

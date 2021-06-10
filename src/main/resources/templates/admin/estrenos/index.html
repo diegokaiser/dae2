@@ -8,6 +8,8 @@
     <link href="https://estrenoshoyb.s3.amazonaws.com/admin/css/bootstrap.min.css" rel="stylesheet">
     <!-- Font Awesome -->
     <link href="https://estrenoshoyb.s3.amazonaws.com/admin/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css" integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk" crossorigin="anonymous">
+
     <!-- NProgress -->
     <link href="https://estrenoshoyb.s3.amazonaws.com/admin/css/nprogress.css" rel="stylesheet">
     <!-- iCheck -->
@@ -102,15 +104,14 @@
                                   <span th:case="1">Validado</span>
                                   <span th:case="0">No validado</span>
                                 </td>
-
                                 <td width="140" th:switch="${estreno.estado}">
                                   <div class="admin-actions" th:case="1">
-                                    <a th:href="@{/estrenos/edit/{id} (id = ${estreno.id}) }" data-id="${estreno.id}" class="btn btn-primary text-left" style="width: 100%;"><i class="fa fa-pencil"></i>&nbsp;&nbsp;Editar</a>
-                                    <a th:if="${estreno.estado == 1}" th:href="@{/estrenos/delete/{id} (id = ${estreno.id}) }" data-id="${estreno.id}" class="btn btn-danger text-left" style="width: 100%;"><i class="fa fa-pencil"></i>&nbsp;&nbsp;Deshabilitar</a>
+                                    <a th:href="@{/admin/estrenos/edit/{id} (id = ${estreno.id}) }"  class="btn btn-primary text-left" style="width: 100%;"><i class="fa fa-pencil"></i>&nbsp;&nbsp;Editar</a>
+                                    <a  th:href="@{'/admin/estrenos/estadoPelicula/'+${estreno.id}+'/0' }"  class="btn btn-danger text-left" style="width: 100%;"><i class="fa fa-pencil"></i>&nbsp;&nbsp;Deshabilitar</a>
                                   </div>
                                   <div class="admin-actions" th:case="0">
-                                    <a th:href="@{/estrenos/edit/{id} (id = ${estreno.id}) }" data-id="${estreno.id}" class="btn btn-primary text-left" style="width: 100%;"><i class="fa fa-pencil"></i>&nbsp;&nbsp;Editar</a>
-                                    <a th:unless="${estreno.estado == 1}" th:href="@{/estrenos/enable/{id} (id = ${estreno.id}) }" data-id="${estreno.id}" class="btn btn-success text-left" style="width: 100%;"><i class="fa fa-check"></i>&nbsp;&nbsp;Habilitar</a>
+                                    <a th:href="@{/admin/estrenos/edit/{id} (id = ${estreno.id}) }"  class="btn btn-primary text-left" style="width: 100%;"><i class="fa fa-pencil"></i>&nbsp;&nbsp;Editar</a>
+                                    <a th:href="@{'/admin/estrenos/estadoPelicula/'+${estreno.id}+'/1' }"   class="btn btn-success text-left" style="width: 100%;"><i class="fa fa-check"></i>&nbsp;&nbsp;Habilitar</a>
                                   </div>
                                 </td>
                               </tr>

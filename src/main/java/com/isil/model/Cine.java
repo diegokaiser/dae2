@@ -13,28 +13,22 @@ import java.util.List;
 @AllArgsConstructor
 @Data
 @Entity
-@Table(name = "CineSede")
+@Table(name = "Cine")
 public class Cine {
 
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
-    @Column(name = "idCineSede")
+    @Column(name = "idCine")
     private Long id;
 
     @Column(name = "nombre")
     private String nombre;
 
-    @Column(name = "direccion")
-    private String direccion;
-
     @Column(name = "estado")
     private Integer estado;
 
-    @Column(name = "idDistrito")
-    private String distrito;
-
-    @Column(name = "idCine")
-    private String cadena;
+    @Column(name = "logo")
+    private String logo;
 
     @DateTimeFormat(pattern = "dd-MM-yyyy")
     @Column(name = "fechaRegistro")
@@ -47,6 +41,9 @@ public class Cine {
     @Column(name = "admiModificacion")
     private String admiModificacion;
 
-    @OneToMany(mappedBy = "pelicula", fetch = FetchType.LAZY, cascade=CascadeType.ALL)
-    private List<Pelicula> peliculas;
+
+    @OneToMany(mappedBy = "cine", fetch = FetchType.LAZY, cascade=CascadeType.ALL)
+    private List<CineSede> CineSede;
+
+
 }

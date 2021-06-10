@@ -2,11 +2,14 @@ package com.isil.controller;
 
 import com.isil.model.Pelicula;
 import com.isil.service.PeliculaService;
+import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+
+import java.text.SimpleDateFormat;
 
 @Controller
 public class PeliculaController {
@@ -32,7 +35,7 @@ public class PeliculaController {
     @PostMapping("/admin/estrenos/save")
     public String peliculasSave(Pelicula pelicula) {
         peliculaService.saveOrUpdate(pelicula);
-        return "redirect:/admin/estrenos/index";
+        return "redirect:/admin/estrenos";
     }
 
     @GetMapping("/admin/estrenos/edit/{id}")
@@ -50,5 +53,12 @@ public class PeliculaController {
     public String peliculasHome(Model model) {
         peliculaService.findAll().ifPresent(peliculas -> model.addAttribute("peliculasHome", peliculas));
         return "home/login/index";
+    }
+
+    @GetMapping("/admin/estrenos/estadoPelicula/{id}/{estado}")
+    public String estadoEstreno(@PathVariable Long id,@PathVariable Integer estado) {
+        peliculaService.estadoPelicula(id,estado);
+        return "redirect:/admin/estrenos";
+
     }
 }

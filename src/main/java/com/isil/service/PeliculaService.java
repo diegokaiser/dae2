@@ -40,4 +40,13 @@ public class PeliculaService implements BaseService<Pelicula, Long> {
                     return true;
                 }).orElse(false);
     }
+
+    public boolean estadoPelicula(Long id,Integer estado){
+        return findById(id).map(
+                pelicula -> {
+                    pelicula.setEstado(estado);
+                    saveOrUpdate(pelicula);
+                    return true;
+                }).orElse(false);
+    }
 }

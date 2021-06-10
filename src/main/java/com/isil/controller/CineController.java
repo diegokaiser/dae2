@@ -32,7 +32,7 @@ public class CineController {
     @PostMapping("/admin/cines/save")
     public String cinesSave(Cine cine) {
         cineService.saveOrUpdate(cine);
-        return "redirect:/admin/cines/index";
+        return "redirect:/admin/cines";
     }
 
     @GetMapping("/admin/cines/edit/{id}")
@@ -45,5 +45,11 @@ public class CineController {
     public String cinesDelete(@PathVariable Long id, Model model) {
         cineService.deleteById(id);
         return "redirect:/admin/cines/index";
+    }
+    @GetMapping("/admin/estrenos/estadoCine/{id}/{estado}")
+    public String estadoEstreno(@PathVariable Long id,@PathVariable Integer estado) {
+        cineService.estadoCine(id,estado);
+        return "redirect:/admin/cines";
+
     }
 }

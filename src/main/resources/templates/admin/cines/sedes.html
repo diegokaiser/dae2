@@ -44,7 +44,7 @@
                 <div class="x_panel">
                   <div class="x_content">
                     <div class="row">
-                      <div class="col-sm-12" th:switch="cines">
+                      <div class="col-sm-12" th:switch="cinesSede">
                         <div class="card-box table-responsive" th:case="*">
 
                           <table id="datatable" class="table table-striped table-bordered" style="width: 100%">
@@ -52,33 +52,32 @@
                               <tr>
                                 <th scope="col">ID</th>
                                 <th scope="col">Nombre</th>
-                                <th scope="col">logo</th>
-                                <th scope="col">Fecha Registro</th>
+                                <th scope="col">Direccion</th>
                                 <th scope="col">Estado</th>
-                                <th scope="col">Sucursales</th>
-                                <th scope="col">Acciones</th>
+                                <th scope="col">Distrito</th>
+                                <th scope="col">Cine
+                                <th scope="col">Fecha de registro</th>
                               </tr>
                             </thead>
                             <tbody>
-                              <tr th:each="cine : ${cines}">
-                                <td th:text="${cine.id}"></td>
-                                <td th:text="${cine.nombre}"></td>
-                                <td th:text="${cine.logo}"></td>
-                                <td th:text="${cine.fechaRegistro}"></td>
-                                <td th:switch="${cine.estado}">
+                              <tr th:each="sede : ${cinesSede}">
+                                <td th:text="${sede.id}"></td>
+                                <td th:text="${sede.nombre}"></td>
+                                <td th:text="${sede.direccion}"></td>
+                                <td th:text="${sede.distrito}"></td>
+                                <td th:text="${sede.cine}"></td>
+                                <td th:switch="${sede.estado}">
                                   <span th:case="1">Validado</span>
                                   <span th:case="0">No validado</span>
                                 </td>
-                                <td ><a th:href="@{/admin/cinesSede/home}" >Ver Sucursales</a></td>
-
-                                <td width="140" th:switch="${cine.estado}">
+                                <td width="140" th:switch="${sede.estado}">
                                   <div class="admin-actions" th:case="1">
-                                    <a th:href="@{/admin/cines/edit/{id} (id = ${cine.id}) }"  class="btn btn-primary text-left" style="width: 100%;" > <i class="fas fa-pen"></i>&nbsp;&nbsp;Editar</a>
-                                    <a  th:href="@{'/admin/estrenos/estadoCine/'+${cine.id}+'/0' }"  class="btn btn-danger text-left" style="width: 100%;"> <i class="fas fa-times"></i>&nbsp;&nbsp;Deshabilitar</a>
+                                    <a th:href="@{/admin/cinesSede/edit/{id} (id = ${sede.id}) }"  class="btn btn-primary text-left" style="width: 100%;"><i class="fa fa-pencil"></i>&nbsp;&nbsp;Editar</a>
+                                    <a  th:href="@{'/admin/cinesSede/estadoCineSede/'+${sede.id}+'/0' }"  class="btn btn-danger text-left" style="width: 100%;"><i class="fa fa-pencil"></i>&nbsp;&nbsp;Deshabilitar</a>
                                   </div>
                                   <div class="admin-actions" th:case="0">
-                                    <a th:href="@{/admin/cines/edit/{id} (id = ${cine.id}) }"  class="btn btn-primary text-left" style="width: 100%;"> <i class="fas fa-pen"></i>&nbsp;&nbsp;Editar</a>
-                                    <a  th:href="@{'/admin/estrenos/estadoCine/'+${cine.id}+'/1' }"  class="btn btn-success text-left" style="width: 100%;"><i class="fa fa-check"></i>&nbsp;&nbsp;Habilitar</a>
+                                    <a th:href="@{/admin/cinesSede/edit/{id} (id = ${sede.id}) }"  class="btn btn-primary text-left" style="width: 100%;"><i class="fa fa-pencil"></i>&nbsp;&nbsp;Editar</a>
+                                    <a th:href="@{'/admin/cinesSede/estadoCineSede/'+${sede.id}+'/1' }"   class="btn btn-success text-left" style="width: 100%;"><i class="fa fa-check"></i>&nbsp;&nbsp;Habilitar</a>
                                   </div>
                                 </td>
                               </tr>

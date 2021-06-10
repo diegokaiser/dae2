@@ -87,7 +87,7 @@
                                 <td width="140" th:switch="${usuario.estado}">
                                   <div class="admin-actions" th:case="1">
                                     <a th:href="@{/admin/usuarios/edit/{id} (id = ${usuario.id}) }"  class="btn btn-primary text-left" style="width: 100%;" > <i class="fas fa-pen"></i>&nbsp;&nbsp;Editar</a>
-                                    <a  th:href="@{'/admin/usuarios/estadoUsuario/'+${usuario.id}+'/0' }"  class="btn btn-danger text-left" style="width: 100%;"> <i class="fas fa-times"></i> </i>&nbsp;&nbsp;Deshabilitar</a>
+                                    <a  th:href="@{'/admin/usuarios/estadoUsuario/'+${usuario.id}+'/0' }"  class="btn btn-danger text-left" style="width: 100%;"> <i class="fas fa-times"></i>&nbsp;&nbsp;Deshabilitar</a>
                                   </div>
                                   <div class="admin-actions" th:case="0">
                                     <a th:href="@{/admin/usuarios/edit/{id} (id = ${usuario.id}) }"  class="btn btn-primary text-left" style="width: 100%;"> <i class="fas fa-pen"></i>&nbsp;&nbsp;Editar</a>
@@ -107,9 +107,7 @@
             </div>
           </div>
         </div>
-<!--
         <footer th:replace="admin/fragments/fragments.html :: footer"></footer>
--->
       </div>
     </div>
 

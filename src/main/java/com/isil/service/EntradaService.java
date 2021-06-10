@@ -40,4 +40,13 @@ public class EntradaService implements BaseService<Entrada, Long> {
                     return true;
                 }).orElse(false);
     }
+
+    public boolean estadoEntrada(Long id,Integer estado){
+        return findById(id).map(
+                entrada -> {
+                    entrada.setEstado(estado);
+                    saveOrUpdate(entrada);
+                    return true;
+                }).orElse(false);
+    }
 }

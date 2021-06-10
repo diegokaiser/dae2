@@ -19,7 +19,10 @@ public class EntradaController {
     /* admin entradas */
     @GetMapping("/admin/entradas")
     public String entradas(Model model) {
+        System.out.println("sitoywe1");
         entradaService.findAll().ifPresent(entradas -> model.addAttribute("entradas", entradas));
+        System.out.println("sitoywe2");
+
         return "admin/entradas/index";
     }
 
@@ -45,5 +48,12 @@ public class EntradaController {
     public String entradasDelete(@PathVariable Long id, Model model) {
         entradaService.deleteById(id);
         return "redirect:/admin/entradas/index";
+    }
+
+    @GetMapping("/admin/entradas/estadoEntrada/{id}/{estado}")
+    public String estadoEntrada(@PathVariable Long id,@PathVariable Integer estado) {
+        entradaService.estadoEntrada(id,estado);
+        return "redirect:/admin/entradas";
+
     }
 }
