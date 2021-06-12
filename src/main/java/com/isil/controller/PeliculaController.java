@@ -44,6 +44,13 @@ public class PeliculaController {
         return "admin/estrenos/add";
     }
 
+    //MostrarDetalles
+    @GetMapping("/admin/estrenosDetalles/edit/{id}")
+    public String peliculaDetalles(@PathVariable Long id, Model model) {
+        peliculaService.findById(id).ifPresent(pelicula -> model.addAttribute("peliculaDetalles", pelicula));
+        return "admin/estrenos/detalles";
+    }
+
     @GetMapping("/admin/estrenos/delete/{id}")
     public String peliculasDelete(@PathVariable Long id, Model model) {
         return "redirect:/admin/estrenos/index";
@@ -59,6 +66,5 @@ public class PeliculaController {
     public String estadoEstreno(@PathVariable Long id,@PathVariable Integer estado) {
         peliculaService.estadoPelicula(id,estado);
         return "redirect:/admin/estrenos";
-
     }
 }

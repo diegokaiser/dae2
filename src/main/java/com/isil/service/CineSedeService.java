@@ -49,9 +49,10 @@ public class CineSedeService implements BaseService<CineSede, Long> {
                     return true;
                 }).orElse(false);
     }
-    public List <CineSede> findAllByidCine(Integer id) {
-        return  cineSedeRepository.findByIdCine(id);
+    public Optional <List <CineSede>> findByIdCine(Integer id) {
+        return  Optional.of(cineSedeRepository.findByIdCine(id));
     }
+
 
     public boolean estadoCineSede(Long id,Integer estado){
         return findById(id).map(

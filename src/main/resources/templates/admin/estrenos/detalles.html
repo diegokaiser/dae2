@@ -45,54 +45,82 @@
           </div>
         </div>
         <div class="clearfix"></div>
-        <form action="#" method="post" th:action="@{/admin/usuarios/save}" th:object="${usuario}" class="px-1 mx-3 font-weight-bolder padded">
+        <form action="#" method="post" th:action="@{/admin/estrenos/save}" th:object="${peliculaDetalles}" class="px-1 mx-3 font-weight-bolder padded">
 
           <!--Datos ocultos-->
+          <input type="hidden" class="form-control" id="idPelicula" name="idPelicula" th:field="*{id}" th:readonly="true" >
           <input type="hidden" class="form-control" id="estado" name="estado" th:field="*{estado}" >
+          <input type="hidden" class="form-control" id="fechaRegistro" name="fechaRegistro" th:field="*{fechaRegistro}" >
           <!-- fin de datos ocultos-->
 
-          <h3 th:text="'Editando a '+${usuario.nombre} + '  ' + ${usuario.apellido}"></h3>
-          <input type="hidden"  id="idUsuario" name="idUsuario" th:field="*{id}" th:readonly="true">
-
+          <h3 th:text="'Detalles de '+${peliculaDetalles.nombre} "></h3>
 
           <div class="form-group">
             <label for="nombre">Nombre:</label>
-            <input type="text" class="form-control" id="nombre" name="nombre" th:field="*{nombre}" >
+            <input type="text" class="form-control" id="nombre" name="nombre" th:field="*{nombre}" th:readonly="true">
           </div>
           <div class="form-group">
-            <label for="apellido">Apellido:</label>
-            <input type="text" class="form-control" id="apellido" name="apellido" th:field="*{apellido}">
+            <label for="duracion">Duracion:</label>
+            <input type="text" class="form-control" id="duracion" name="duracion" th:field="*{duracion}" th:readonly="true">
           </div>
           <div class="form-group">
-            <label for="tipoDocumento">Tipo de Documento de Identidad:</label>
-            <select class="custom-select" name="tipoDocumento" id="tipoDocumento" th:field="*{tipoDocumento}">
-              <option th:value="1" th:text="DNI"></option>
-              <option th:value="0" th:text="CE"></option>
-            </select>
+
+            <label for="fechaEstreno">Fecha de estreno:</label>
+            <input type="text" class="form-control" id="fechaEstreno" name="fechaEstreno"  th:field="*{fechaEstreno}" th:readonly="true">
           </div>
           <div class="form-group">
-          <label for="tipoUsuario">Tipo de usuario:</label>
-            <select class="custom-select" name="tipoUsuario" id="tipoUsuario" th:field="*{idTipoUsuario}">
-              <option th:each="tipoUsuario:${tipoUsuarios}"
-                      th:value="${tipoUsuario.idTipoUsuario}"
-                      th:text="${tipoUsuario.nombre}"
-                      th:selected="${tipoUsuario.idTipoUsuario}"></option>
-            </select>
+            <label for="idioma">Idioma:</label>
+            <input type="text" class="form-control" id="idioma" name="idioma" th:field="*{idioma}" th:readonly="true">
           </div>
           <div class="form-group">
-            <label for="numeroDocumento">Documento de Identidad:</label>
-            <input type="text" class="form-control" id="numeroDocumento" name="numeroDocumento" th:field="*{numeroDocumento}">
+            <label for="pais">País:</label>
+            <input type="text" class="form-control" id="pais" name="pais" th:field="*{pais}" th:readonly="true">
           </div>
           <div class="form-group">
-            <label for="correo">Correo electrónico:</label>
-            <input type="text" class="form-control" id="correo" name="correo" th:field="*{correo}">
+            <label for="subtitulos">Subtitulos:</label>
+            <input type="number" class="form-control" id="subtitulos" name="subtitulos" th:field="*{subtitulos}" th:readonly="true">
           </div>
           <div class="form-group">
-            <label for="contrasena">Contraseña:</label>
-            <input type="text" class="form-control" id="contrasena" name="contrasena" th:field="*{contrasena}">
+            <label for="doblada">Doblada:</label>
+            <input type="number" class="form-control" id="doblada" name="doblada" th:field="*{doblada}" th:readonly="true">
           </div>
           <div class="form-group">
-            <button type="submit" class="btn btn-primary btn-block mt-3 mb-1">Enviar</button>
+            <label for="descripcion">Descripcion:</label>
+            <input type="text" class="form-control" id="descripcion" name="descripcion" th:field="*{descripcion}" th:readonly="true">
+          </div>
+          <div class="form-group">
+            <label for="genero">Genero:</label>
+            <input type="text" class="form-control" id="genero" name="genero" th:field="*{genero}" th:readonly="true">
+          </div>
+          <div class="form-group">
+            <label for="trailer">Trailer:</label>
+            <input type="text" class="form-control" id="trailer" name="trailer" th:field="*{trailer}" th:readonly="true">
+          </div>
+          <div class="form-group">
+            <label for="recomendada">Recomendada:</label>
+            <input type="number" class="form-control" id="recomendada" name="recomendada" th:field="*{recomendada}" th:readonly="true">
+          </div>
+          <div class="form-group">
+            <label for="portada">Portada:</label>
+            <input type="text" class="form-control" id="portada" name="portada" th:field="*{portada}" th:readonly="true">
+          </div>
+          <div class="form-group">
+            <label for="destacada">Destacada:</label>
+            <input type="number" class="form-control" id="destacada" name="destacada" th:field="*{destacada}" th:readonly="true">
+          </div>
+          <div class="form-group">
+            <label for="protagonistas">Protagonistas:</label>
+            <input type="text" class="form-control" id="protagonistas" name="protagonistas" th:field="*{protagonistas}" th:readonly="true">
+          </div>
+          <div class="form-group">
+            <label for="portadaDestacada">Portada destacada:</label>
+            <input type="text" class="form-control" id="portadaDestacada" name="portadaDestacada" th:field="*{portadaDestacada}" th:readonly="true">
+          </div>
+          <div class="form-group">
+            <button th:href="@{/admin/estrenos}" class="btn btn-primary btn-block mt-3 mb-1"> Regresar</button>
+
+
+
           </div>
         </form>
 

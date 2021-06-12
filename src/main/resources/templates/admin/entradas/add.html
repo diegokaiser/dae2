@@ -45,51 +45,57 @@
           </div>
         </div>
         <div class="clearfix"></div>
-        <form action="#" method="post" th:action="@{/admin/usuarios/save}" th:object="${usuario}" class="px-1 mx-3 font-weight-bolder padded">
+        <form action="#" method="post" th:action="@{/admin/entradas/save}" th:object="${entrada}" class="px-1 mx-3 font-weight-bolder padded">
 
           <!--Datos ocultos-->
+          <input type="hidden"  id="idEntrada" name="idEntrada" th:field="*{idEntrada}" th:readonly="true">
           <input type="hidden" class="form-control" id="estado" name="estado" th:field="*{estado}" >
+          <input type="hidden" class="form-control" id="fechaRegistro" name="fechaRegistro" th:field="*{fechaRegistro}" >
           <!-- fin de datos ocultos-->
 
-          <h3 th:text="'Editando a '+${usuario.nombre} + '  ' + ${usuario.apellido}"></h3>
-          <input type="hidden"  id="idUsuario" name="idUsuario" th:field="*{id}" th:readonly="true">
+          <h3 th:text="'Editando entrada '+${entrada.idEntrada} "></h3>
 
+<!--          <div class="form-group">
+            <label for="Pelicula">Pelicula:</label>
+            <input type="text" class="form-control" id="Pelicula" name="Pelicula" th:field="${entrada.pelicula.nombre}" >
+          </div>-->
 
           <div class="form-group">
-            <label for="nombre">Nombre:</label>
-            <input type="text" class="form-control" id="nombre" name="nombre" th:field="*{nombre}" >
+            <label for="idPelicula">Pelicula:</label>
+            <select class="custom-select" name="idPelicula" id="idPelicula" th:field="*{idPelicula}">
+              <option th:each="pelicula:${peliculas}"
+                      th:value="${pelicula.id}"
+                      th:text="${pelicula.nombre}"
+                      th:selected="${pelicula.id}"></option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="fechaEstreno">Fecha de estreno:</label>
+            <input type="text" class="form-control" id="fechaEstreno" name="fechaEstreno" th:field="${entrada.pelicula.fechaEstreno}" >
           </div>
           <div class="form-group">
-            <label for="apellido">Apellido:</label>
-            <input type="text" class="form-control" id="apellido" name="apellido" th:field="*{apellido}">
+            <label for="precio">Precio:</label>
+            <input type="text" class="form-control" id="precio" name="precio" th:field="*{precio}">
           </div>
           <div class="form-group">
-            <label for="tipoDocumento">Tipo de Documento de Identidad:</label>
-            <select class="custom-select" name="tipoDocumento" id="tipoDocumento" th:field="*{tipoDocumento}">
-              <option th:value="1" th:text="DNI"></option>
-              <option th:value="0" th:text="CE"></option>
+            <label for="tipo">Tipo de pelicula:</label>
+            <select class="form-control" name="tipo" id="tipo" th:field="*{tipo}">
+              <option th:value="2D" th:text="2D"></option>
+              <option th:value="3D" th:text="3D"></option>
             </select>
           </div>
           <div class="form-group">
-          <label for="tipoUsuario">Tipo de usuario:</label>
-            <select class="custom-select" name="tipoUsuario" id="tipoUsuario" th:field="*{idTipoUsuario}">
-              <option th:each="tipoUsuario:${tipoUsuarios}"
-                      th:value="${tipoUsuario.idTipoUsuario}"
-                      th:text="${tipoUsuario.nombre}"
-                      th:selected="${tipoUsuario.idTipoUsuario}"></option>
-            </select>
+            <label for="sala">Numero de sala:</label>
+            <input type="text" class="form-control" id="sala" name="sala" th:field="${entrada.sala.numero}">
           </div>
           <div class="form-group">
-            <label for="numeroDocumento">Documento de Identidad:</label>
-            <input type="text" class="form-control" id="numeroDocumento" name="numeroDocumento" th:field="*{numeroDocumento}">
+            <label for="cine">Cine:</label>
+            <input type="text" class="form-control" id="cine" name="cine" th:field="${entrada.sala.cineSede.cine.nombre}">
           </div>
           <div class="form-group">
-            <label for="correo">Correo electrónico:</label>
-            <input type="text" class="form-control" id="correo" name="correo" th:field="*{correo}">
-          </div>
-          <div class="form-group">
-            <label for="contrasena">Contraseña:</label>
-            <input type="text" class="form-control" id="contrasena" name="contrasena" th:field="*{contrasena}">
+            <label for="stock">Stock:</label>
+            <input type="text" class="form-control" id="stock" name="stock" th:field="*{stock}">
           </div>
           <div class="form-group">
             <button type="submit" class="btn btn-primary btn-block mt-3 mb-1">Enviar</button>

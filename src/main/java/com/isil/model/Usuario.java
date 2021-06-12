@@ -55,6 +55,10 @@ public class Usuario {
     @Column(name = "admiModificacion")
     private String admiModificacion;
 
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinColumn(name = "idTipoUsuario", insertable = false, updatable = false)
+    private TipoUsuario tipoUsuario;
+
     // idTipoUsuario
     // 1 = Cliente
     // 2 = Admin

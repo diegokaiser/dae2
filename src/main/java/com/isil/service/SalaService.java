@@ -1,6 +1,7 @@
 package com.isil.service;
 
 
+import com.isil.model.CineSede;
 import com.isil.model.Sala;
 import com.isil.repository.SalaRepository;
 import org.springframework.stereotype.Service;
@@ -37,6 +38,18 @@ public class SalaService implements BaseService<Sala, Long> {
         return findById(id)
                 .map(sala -> {
                     salaRepository.delete(sala);
+                    return true;
+                }).orElse(false);
+    }
+    public Optional <List <Sala>> findByIdCineSede(Integer id) {
+        return  Optional.of(salaRepository.findByIdCineSede(id));
+    }
+
+    public boolean estadoSala(Long id,Integer estado){
+        return findById(id).map(
+                sala -> {
+                    sala.setEstado(estado);
+                    saveOrUpdate(sala);
                     return true;
                 }).orElse(false);
     }

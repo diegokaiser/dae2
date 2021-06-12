@@ -34,7 +34,8 @@
       <div class="">
         <div class="page-title">
           <div class="title_left">
-            <h3>Estrenos registrados</h3>
+            <h3>Entradas registradas</h3>
+            <a th:href="@{/admin/entradas/add}" class="btn btn-primary  btn-sm text-white"><i class="fas fa-plus"></i>Agregar</a>
           </div>
         </div>
         <div class="clearfix"></div>
@@ -77,11 +78,11 @@
                           </td>
                           <td width="140" th:switch="${entrada.estado}">
                           <div class="admin-actions" th:case="1">
-                              <a th:href="@{/admin/usuarios/edit/{id} (id = ${entrada.idEntrada}) }"  class="btn btn-primary text-left" style="width: 100%;" > <i class="fas fa-pen"></i>&nbsp;&nbsp;Editar</a>
+                              <a th:href="@{/admin/entradas/edit/{id} (id = ${entrada.idEntrada}) }"  class="btn btn-primary text-left" style="width: 100%;" > <i class="fas fa-pen"></i>&nbsp;&nbsp;Editar</a>
                               <a  th:href="@{'/admin/entradas/estadoEntrada/'+${entrada.idEntrada}+'/0' }"  class="btn btn-danger text-left" style="width: 100%;"> <i class="fas fa-times"></i>&nbsp;&nbsp;Deshabilitar</a>
                             </div>
                           <div class="admin-actions" th:case="0">
-                            <a th:href="@{/admin/usuarios/edit/{id} (id = ${entrada.idEntrada}) }"  class="btn btn-primary text-left" style="width: 100%;"> <i class="fas fa-pen"></i>&nbsp;&nbsp;Editar</a>
+                            <a th:href="@{/admin/entradas/edit/{id} (id = ${entrada.idEntrada}) }"  class="btn btn-primary text-left" style="width: 100%;"> <i class="fas fa-pen"></i>&nbsp;&nbsp;Editar</a>
                             <a  th:href="@{'/admin/entradas/estadoEntrada/'+${entrada.idEntrada}+'/1' }"  class="btn btn-success text-left" style="width: 100%;"> <i class="fa fa-check"></i>&nbsp;&nbsp;Habilitar</a>
                             </div>
                           </td>

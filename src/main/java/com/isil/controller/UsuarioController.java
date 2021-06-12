@@ -1,7 +1,6 @@
 package com.isil.controller;
 
-import com.isil.repository.UsuarioRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.isil.service.TipoUsuarioService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,13 +12,13 @@ import com.isil.service.UsuarioService;
 @Controller
 public class UsuarioController {
     private final UsuarioService usuarioService;
+    private final TipoUsuarioService tipoUsuarioService;
 
-    @Autowired
-    private UsuarioRepository usuarioRepository;
-
-    public UsuarioController(UsuarioService usuarioService) {
+    public UsuarioController(UsuarioService usuarioService, TipoUsuarioService tipoUsuarioService) {
         this.usuarioService = usuarioService;
+        this.tipoUsuarioService = tipoUsuarioService;
     }
+
 
     /* admin usuarios */
     @GetMapping("/admin/usuarios")
@@ -31,6 +30,8 @@ public class UsuarioController {
     @GetMapping("/admin/usuarios/add")
     public String usuariosAdd(Model model) {
         model.addAttribute("usuario", new Usuario());
+        tipoUsuarioService.findAll().
+                ifPresent(tipoUsuarios -> model.addAttribute("tipoUsuarios", tipoUsuarios));
         return "admin/usuarios/add";
     }
 
@@ -42,7 +43,10 @@ public class UsuarioController {
 
     @GetMapping("/admin/usuarios/edit/{id}")
     public String usuariosEdit(@PathVariable Long id, Model model) {
-        usuarioService.findById(id).ifPresent(usuario -> model.addAttribute("usuarioEdit", usuario));
+        usuarioService.findById(id).ifPresent(usuario -> model.addAttribute("usuario", usuario));
+
+        tipoUsuarioService.findAll().
+                ifPresent(tipoUsuarios -> model.addAttribute("tipoUsuarios", tipoUsuarios));
         return "admin/usuarios/add";
     }
 
@@ -67,7 +71,7 @@ public class UsuarioController {
 
     @PostMapping("/registro/usuario/saving")
     public String usuariosRegisterSaving(Usuario usuario) {
-        usuarioRepository.save(usuario);
+        usuarioService.saveOrUpdate(usuario);
         return "/home/registro/validating";
     }
 

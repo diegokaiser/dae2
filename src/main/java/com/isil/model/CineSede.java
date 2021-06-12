@@ -31,7 +31,7 @@ public class CineSede {
     private Integer estado;
 
     @Column(name = "idDistrito")
-    private Integer distrito;
+    private Integer idDistrito;
 
     @Column(name = "idCine")
     private Integer idCine;
@@ -52,6 +52,10 @@ public class CineSede {
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "idCine", insertable = false, updatable = false)
     private Cine cine;
+
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinColumn(name = "idDistrito", insertable = false, updatable = false)
+    private Distrito distrito;
 
     @OneToMany(mappedBy = "cineSede", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<Sala> sala;

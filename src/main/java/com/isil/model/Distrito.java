@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.List;
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -20,4 +21,8 @@ public class Distrito {
 
     @Column(name = "Nombre")
     private String Nombre;
+
+
+    @OneToMany(mappedBy = "distrito", fetch = FetchType.LAZY, cascade=CascadeType.ALL)
+    private List<CineSede> CineSede;
 }

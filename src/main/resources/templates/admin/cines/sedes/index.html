@@ -53,23 +53,26 @@
                                 <th scope="col">ID</th>
                                 <th scope="col">Nombre</th>
                                 <th scope="col">Direccion</th>
-                                <th scope="col">Estado</th>
                                 <th scope="col">Distrito</th>
-                                <th scope="col">Cine
+                                <th scope="col">Cine</th>
+                                <th scope="col">Estado</th>
+                                <th scope="col">Salas</th>
                                 <th scope="col">Fecha de registro</th>
                               </tr>
                             </thead>
                             <tbody>
-                              <tr th:each="sede : ${cinesSede}">
+                              <tr th:each="sede : ${cinesSede}" >
                                 <td th:text="${sede.id}"></td>
                                 <td th:text="${sede.nombre}"></td>
                                 <td th:text="${sede.direccion}"></td>
-                                <td th:text="${sede.distrito}"></td>
-                                <td th:text="${sede.cine}"></td>
+                                <td th:text="${sede.distrito.nombre}"></td>
+                                <td th:text="${sede.cine.nombre}"></td>
                                 <td th:switch="${sede.estado}">
                                   <span th:case="1">Validado</span>
                                   <span th:case="0">No validado</span>
                                 </td>
+
+                                <td ><a th:href="@{'/admin/salas/'+${sede.id}}"> Ver Salas</a></td>
                                 <td width="140" th:switch="${sede.estado}">
                                   <div class="admin-actions" th:case="1">
                                     <a th:href="@{/admin/cinesSede/edit/{id} (id = ${sede.id}) }"  class="btn btn-primary text-left" style="width: 100%;"><i class="fa fa-pencil"></i>&nbsp;&nbsp;Editar</a>

@@ -25,7 +25,7 @@ public class CineController {
 
     @GetMapping("/admin/cines/add")
     public String cinesAdd(Model model) {
-        model.addAttribute("cines", new Cine());
+        model.addAttribute("cine", new Cine());
         return "admin/cines/add";
     }
 
@@ -47,7 +47,7 @@ public class CineController {
         return "redirect:/admin/cines/index";
     }
     @GetMapping("/admin/estrenos/estadoCine/{id}/{estado}")
-    public String estadoEstreno(@PathVariable Long id,@PathVariable Integer estado) {
+    public String estadoCine(@PathVariable Long id,@PathVariable Integer estado) {
         cineService.estadoCine(id,estado);
         return "redirect:/admin/cines";
 
