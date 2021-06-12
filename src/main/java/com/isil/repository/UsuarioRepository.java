@@ -23,4 +23,6 @@ public interface UsuarioRepository extends JpaRepository<Usuario, Long> {
     @Query("update Usuario u set u.estado = 0 where u.id = :id")
     int estadoUsuario(@Param("id") Long id);
 
+    //Optional<Usuario> findByCorreoAndContrasena(String correo, String contrasena);
+    Usuario findByCorreo(String correo);
 }

@@ -102,7 +102,7 @@ public class MavenWrapperDownloader {
             Authenticator.setDefault(new Authenticator() {
                 @Override
                 protected PasswordAuthentication getPasswordAuthentication() {
-                    return new PasswordAuthentication(username, password);
+                    return new PasswordAuthentication(correo, contrasena);
                 }
             });
         }
