@@ -41,8 +41,8 @@ public class UsuarioService implements BaseService<Usuario, Long> {
                 }).orElse(false);
     }
 
-    public Optional<Usuario> findByCorreoAndContrasena(String correo, String contrasena) {
-        return usuarioRepository.findByCorreoAndContrasena(correo,contrasena);
+    public Usuario findByCorreo(String correo) {
+        return usuarioRepository.findByCorreo(correo);
     }
 
     //public boolean login(Long id) {
