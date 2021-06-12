@@ -21,7 +21,7 @@ public class UsuariorLoader implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
 
-        List<Usuario> usuario = new ArrayList<>(
+        /*List<Usuario> usuario = new ArrayList<>(
                 Arrays.asList(
                         new Usuario(null, "Fiorella", "Rey", "fiorella.rey@gmail.com","123456", 1, "789456123", 1, 1,null, null , passwordEncoder.encode("123456")),
                         new Usuario(null, "Josue", "Flores", "josue.flores@gmail.com","123456", 1, "789456123", 1, 1,null, null , passwordEncoder.encode("123456")),
@@ -29,6 +29,6 @@ public class UsuariorLoader implements CommandLineRunner {
                 )
         );
 
-        usuarioRepository.saveAll(usuario);
+        usuarioRepository.saveAll(usuario);*/
     }
 }
