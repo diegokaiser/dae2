@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org" >
 <head>
   <meta charset="UTF-8">
-  <title>Usuarios | Admin Area</title>
+  <title>Sucursales de cines | Admin Area</title>
   <!-- Bootstrap -->
   <link href="//cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css" rel="stylesheet">
   <link href="https://estrenoshoyb.s3.amazonaws.com/admin/css/bootstrap.min.css" rel="stylesheet">
@@ -49,6 +49,8 @@
 
           <!--Datos ocultos-->
           <input type="hidden" class="form-control" id="estado" name="estado" th:field="*{estado}" >
+          <input type="hidden" class="form-control" id="fechaRegistro" name="fechaRegistro" th:field="*{fechaRegistro}" >
+
           <!-- fin de datos ocultos-->
 
           <h3 th:text="'Editando a '+${usuario.nombre} + '  ' + ${usuario.apellido}"></h3>
@@ -140,119 +142,3 @@
 
 
 
-
-
-
-<!--
-
-
-<!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org" >
-<head>
-  <meta charset="UTF-8">
-  <title>Usuarios | Admin Area</title>
-  &lt;!&ndash; Bootstrap &ndash;&gt;
-  <link href="//cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css" rel="stylesheet">
-  <link href="https://estrenoshoyb.s3.amazonaws.com/admin/css/bootstrap.min.css" rel="stylesheet">
-
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
-
-  &lt;!&ndash; Font Awesome &ndash;&gt;
-  <link href="https://estrenoshoyb.s3.amazonaws.com/admin/css/font-awesome.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css" integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk" crossorigin="anonymous">
-  &lt;!&ndash; NProgress &ndash;&gt;
-  <link href="https://estrenoshoyb.s3.amazonaws.com/admin/css/nprogress.css" rel="stylesheet">
-  &lt;!&ndash; iCheck &ndash;&gt;
-  <link href="https://estrenoshoyb.s3.amazonaws.com/admin/css/green.css" rel="stylesheet">
-  &lt;!&ndash; Datatables &ndash;&gt;
-
-  <link href="https://estrenoshoyb.s3.amazonaws.com/admin/css/dataTables.bootstrap.min.css" rel="stylesheet">
-  <link href="https://estrenoshoyb.s3.amazonaws.com/admin/css/buttons.bootstrap.min.css" rel="stylesheet">
-  <link href="https://estrenoshoyb.s3.amazonaws.com/admin/css/fixedHeader.bootstrap.min.css" rel="stylesheet">
-  <link href="https://estrenoshoyb.s3.amazonaws.com/admin/css/responsive.bootstrap.min.css" rel="stylesheet">
-  <link href="https://estrenoshoyb.s3.amazonaws.com/admin/css/scroller.bootstrap.min.css" rel="stylesheet">
-
-  &lt;!&ndash; Custom Theme Style &ndash;&gt;
-  <link href="https://estrenoshoyb.s3.amazonaws.com/admin/css/custom.min.css" rel="stylesheet">
-</head>
-<body>
-  <form action="#" method="POST" th:action="@{/admin/usuarios/save}" th:object="${usuarioEdit}"class="px-1 mx-3 font-weight-bolder">
-    &lt;!&ndash;
-                  <input type="hidden" id="processing" name="processing" value="editarUsuario">
-    &ndash;&gt;           <label for="idUsuario">Id </label>
-    <input type="hidden"  id="idUsuario" name="idUsuario" th:field="*{id}" th:readonly="true">
-
-    <div class="form-group">
-      <label for="nombre">Nombre:</label>
-      <input type="text" class="form-control" id="nombre" name="nombre" th:field="*{nombre}" >
-    </div>
-    <div class="form-group">
-      <label for="apellido">Apellido:</label>
-      <input type="text" class="form-control" id="apellido" name="apellido" th:field="*{apellido}">
-    </div>
-    <div class="form-group">
-      <label for="tipoDocumento">Tipo de Documento de Identidad:</label>
-      <select class="form-control" name="tipoDocumento" id="tipoDocumento">
-        <c:set var="tipoDocumento" value=" ">
-          <c:choose>
-            <c:when test="${tipoDocumento == 1}">
-              <option value="1" selected>DNI</option>
-              <option value="2">C.E</option>
-            </c:when>
-            <c:otherwise>
-              <option value="1">DNI</option>
-              <option value="2" selected>C.E</option>
-            </c:otherwise>
-          </c:choose>
-      </select>
-    </div>
-    <div class="form-group">
-      <label for="numeroDocumento">Documento de Identidad:</label>
-      <input type="text" class="form-control" id="numeroDocumento" name="numeroDocumento" th:field="*{numeroDocumento}">
-    </div>
-    <div class="form-group">
-      <label for="correo">Correo electrónico:</label>
-      <input type="text" class="form-control" id="correo" name="correo" th:field="*{correo}">
-    </div>
-    <div class="form-group">
-      <label for="contrasena">Contraseña:</label>
-      <input type="password" class="form-control" id="contrasena" name="contrasena" th:field="*{contrasena}">
-    </div>
-    <div class="form-group">
-      <button type="submit" class="btn btn-primary btn-block mt-3 mb-1">Actualizar</button>
-      <button type="submit" class="btn btn-danger btn-block " data-bs-dismiss="modal">Cancelar</button>
-    </div>
-  </form>
-
-  &lt;!&ndash; jQuery &ndash;&gt;
-  <script src="https://estrenoshoyb.s3.amazonaws.com/admin/js/jquery.min.js"></script>
-  &lt;!&ndash; Bootstrap &ndash;&gt;
-  <script src="https://estrenoshoyb.s3.amazonaws.com/admin/js/bootstrap.bundle.min.js"></script>
-  &lt;!&ndash; FastClick &ndash;&gt;
-  <script src="https://estrenoshoyb.s3.amazonaws.com/admin/js/fastclick.js"></script>
-  &lt;!&ndash; NProgress &ndash;&gt;
-  <script src="https://estrenoshoyb.s3.amazonaws.com/admin/js/nprogress.js"></script>
-  &lt;!&ndash; iCheck &ndash;&gt;
-  <script src="https://estrenoshoyb.s3.amazonaws.com/admin/js/icheck.min.js"></script>
-  &lt;!&ndash; Datatables &ndash;&gt;
-  <script src="https://estrenoshoyb.s3.amazonaws.com/admin/js/jquery.dataTables.min.js"></script>
-  <script src="https://estrenoshoyb.s3.amazonaws.com/admin/js/dataTables.bootstrap.min.js"></script>
-  <script src="https://estrenoshoyb.s3.amazonaws.com/admin/js/dataTables.buttons.min.js"></script>
-  <script src="https://estrenoshoyb.s3.amazonaws.com/admin/js/buttons.bootstrap.min.js"></script>
-  <script src="https://estrenoshoyb.s3.amazonaws.com/admin/js/buttons.flash.min.js"></script>
-  <script src="https://estrenoshoyb.s3.amazonaws.com/admin/js/buttons.html5.min.js"></script>
-  <script src="https://estrenoshoyb.s3.amazonaws.com/admin/js/buttons.print.min.js"></script>
-  <script src="https://estrenoshoyb.s3.amazonaws.com/admin/js/dataTables.fixedHeader.min.js"></script>
-  <script src="https://estrenoshoyb.s3.amazonaws.com/admin/js/dataTables.keyTable.min.js"></script>
-  <script src="https://estrenoshoyb.s3.amazonaws.com/admin/js/dataTables.responsive.min.js"></script>
-  <script src="https://estrenoshoyb.s3.amazonaws.com/admin/js/responsive.bootstrap.js"></script>
-  <script src="https://estrenoshoyb.s3.amazonaws.com/admin/js/dataTables.scroller.min.js"></script>
-  <script src="https://estrenoshoyb.s3.amazonaws.com/admin/js/jszip.min.js"></script>
-  <script src="https://estrenoshoyb.s3.amazonaws.com/admin/js/pdfmake.min.js"></script>
-  <script src="https://estrenoshoyb.s3.amazonaws.com/admin/js/vfs_fonts.js"></script>
-
-  &lt;!&ndash; Custom Theme Scripts &ndash;&gt;
-  <script src="https://estrenoshoyb.s3.amazonaws.com/admin/js/custom.min.js"></script>
-</body>
-</html>-->

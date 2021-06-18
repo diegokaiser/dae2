@@ -24,7 +24,10 @@ public interface CineSedeRepository extends JpaRepository<CineSede, Long> {
     @Transactional(readOnly =true)// para que solo lea y no modifique
        List<CineSede> findByIdCine(Integer idCine);
 
-    @Query("SELECT u FROM CineSede u WHERE u.estado = ?1")
-     List<CineSede> getCineSedeByEstado(Integer idCine);
+
+    @Transactional(readOnly =true)// para que solo lea y no modifique
+    List<CineSede> findByIdCineSede(Long idCineSede);
+
+
 }
 

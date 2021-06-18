@@ -26,6 +26,7 @@ public class CineController {
     @GetMapping("/admin/cines/add")
     public String cinesAdd(Model model) {
         model.addAttribute("cine", new Cine());
+
         return "admin/cines/add";
     }
 

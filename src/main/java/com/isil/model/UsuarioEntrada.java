@@ -26,7 +26,9 @@ public class UsuarioEntrada {
     @Column(name = "estado")
     private Integer estado;
 
+/*
     @DateTimeFormat(pattern = "dd-MM-yyyy")
+*/
     @Column(name = "fechaRegistro")
     private LocalDate fechaRegistro;
 }

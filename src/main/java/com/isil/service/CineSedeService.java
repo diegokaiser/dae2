@@ -6,6 +6,7 @@ import com.isil.repository.CineSedeRepository;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -61,6 +62,11 @@ public class CineSedeService implements BaseService<CineSede, Long> {
                     saveOrUpdate(cineSede);
                     return true;
                 }).orElse(false);
+    }
+
+    public Optional <List <CineSede>> findByIdCineSede(Integer id) {
+        return  Optional.of(cineSedeRepository.findByIdCineSede(Long.valueOf(id)));
+
     }
 
 }
