@@ -37,6 +37,7 @@ public class EntradaController {
 /*
         salaService.findByIdCineSede(id).ifPresent(salas -> model.addAttribute("salas", salas));
 */
+        salaService.findAll().ifPresent(salas -> model.addAttribute("salas", salas));
 
         return "admin/entradas/add";
     }
@@ -51,6 +52,8 @@ public class EntradaController {
     public String entradasEdit(@PathVariable Long id, Model model) {
         entradaService.findById(id).ifPresent(entrada -> model.addAttribute("entrada", entrada));
         peliculaService.findAll().ifPresent(peliculas -> model.addAttribute("peliculas", peliculas));
+        salaService.findAll().ifPresent(salas -> model.addAttribute("salas", salas));
+
 /*
         salaService.findByIdCineSede(id).ifPresent(salas -> model.addAttribute("salas", salas));
 */

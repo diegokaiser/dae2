@@ -13,4 +13,8 @@ public interface SalaRepository extends JpaRepository<Sala, Long> {
     @Transactional(readOnly =true)// para que solo lea y no modifique
     List<Sala> findByIdCineSede(Integer idCine);
 
+    @Transactional(readOnly =true)// para que solo lea y no modifique
+    List<Sala> findFirstByIdCineSede(Integer idCineSede);
+
+
 }

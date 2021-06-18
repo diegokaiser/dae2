@@ -36,6 +36,8 @@
             <div class="page-title">
               <div class="title_left">
                 <h3>Salas registrados</h3>
+                <a th:href="@{/admin/salas/add}" class="btn btn-primary  btn-sm text-white"><i class="fas fa-plus"></i>Agregar</a>
+
               </div>
             </div>
             <div class="clearfix"></div>
@@ -53,7 +55,10 @@
                                 <th scope="col">ID</th>
                                 <th scope="col">Numero de sala</th>
                                 <th scope="col">Capacidad</th>
+                                <th scope="col">idCineSede</th>
+<!--
                                 <th scope="col">Tipo de Sala</th>
+-->
                                 <th scope="col">Estado</th>
                               </tr>
                             </thead>
@@ -62,19 +67,23 @@
                                 <td th:text="${sala.idSala}"></td>
                                 <td th:text="${sala.numero}"></td>
                                 <td th:text="${sala.capacidad}"></td>
-                                <td th:text="${sala.tipoSala}"></td>
+                                <td th:text="${sala.idCineSede}"></td>
+
+                                <!--
+                                                                <td th:text="${sala.tipoSala}"></td>
+                                -->
                                 <td th:switch="${sala.estado}">
                                   <span th:case="1">Validado</span>
                                   <span th:case="0">No validado</span>
                                 </td>
                                 <td width="140" th:switch="${sala.estado}">
                                   <div class="admin-actions" th:case="1">
-                                    <a th:href="@{/admin/salas/edit/{id} (id = ${sala.idSala}) }"  class="btn btn-primary text-left" style="width: 100%;"><i class="fa fa-pencil"></i>&nbsp;&nbsp;Editar</a>
-                                    <a  th:href="@{'/admin/salas/estadoSala/'+${sala.idSala}+'/0' }"  class="btn btn-danger text-left" style="width: 100%;"><i class="fa fa-pencil"></i>&nbsp;&nbsp;Deshabilitar</a>
+                                    <a th:href="@{/admin/salas/edit/{id} (id = ${sala.idSala}) }"  class="btn btn-primary text-left" style="width: 100%;" > <i class="fas fa-pen"></i>&nbsp;&nbsp;Editar</a>
+                                    <a  th:href="@{'/admin/salas/estadoSala/'+${sala.idSala}+'/0' }"   class="btn btn-danger text-left" style="width: 100%;"> <i class="fas fa-times"></i>&nbsp;&nbsp;Deshabilitar</a>
                                   </div>
                                   <div class="admin-actions" th:case="0">
-                                    <a th:href="@{/admin/salas/edit/{id} (id = ${sala.idSala}) }"  class="btn btn-primary text-left" style="width: 100%;"><i class="fa fa-pencil"></i>&nbsp;&nbsp;Editar</a>
-                                    <a th:href="@{'/admin/salas/estadoSala/'+${sala.idSala}+'/1' }"   class="btn btn-success text-left" style="width: 100%;"><i class="fa fa-check"></i>&nbsp;&nbsp;Habilitar</a>
+                                    <a th:href="@{/admin/salas/edit/{id} (id = ${sala.idSala}) }"  class="btn btn-primary text-left" style="width: 100%;"> <i class="fas fa-pen"></i>&nbsp;&nbsp;Editar</a>
+                                    <a  th:href="@{'/admin/salas/estadoSala/'+${sala.idSala}+'/1' }"   class="btn btn-success text-left" style="width: 100%;"><i class="fa fa-check"></i>&nbsp;&nbsp;Habilitar</a>
                                   </div>
                                 </td>
                               </tr>

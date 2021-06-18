@@ -1,6 +1,7 @@
 package com.isil.controller;
 
 import com.isil.model.Sala;
+import com.isil.service.CineSedeService;
 import com.isil.service.SalaService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -11,9 +12,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 @Controller
 public class SalaController {
     private final SalaService salaService;
+    private final CineSedeService cineSedeService;
 
-    public SalaController(SalaService salaService) {
+    public SalaController(SalaService salaService, CineSedeService cineSedeService) {
         this.salaService = salaService;
+        this.cineSedeService = cineSedeService;
     }
 
     /* admin salas */
@@ -23,9 +26,12 @@ public class SalaController {
         return "admin/salas/index";
     }*/
 
+    Integer idCineSedeRetorna;//para guardar el id de las cinesede y poner retornar luego del update
+
     @GetMapping("/admin/salas/{id}")
     public String salas(Model model,@PathVariable Integer id) {
         salaService.findByIdCineSede(id).ifPresent(salas -> model.addAttribute("salas", salas));
+        idCineSedeRetorna=id;
         return "admin/cines/salas/index";
     }
 
@@ -33,20 +39,22 @@ public class SalaController {
 
     @GetMapping("/admin/salas/add")
     public String salaAdd(Model model) {
-        model.addAttribute("salas", new Sala());
-        return "admin/salas/add";
+        model.addAttribute("sala", new Sala());
+        cineSedeService.findByIdCineSede(idCineSedeRetorna).ifPresent(salas -> model.addAttribute("salas", salas));
+        return "admin/cines/salas/add";
     }
 
     @PostMapping("/admin/salas/save")
     public String salaSave(Sala sala) {
         salaService.saveOrUpdate(sala);
-        return "redirect:/admin/salas/index";
+        return "redirect:/admin/salas/"+idCineSedeRetorna;
     }
 
     @GetMapping("/admin/salas/edit/{id}")
     public String salaEdit(@PathVariable Long id, Model model) {
         salaService.findById(id).ifPresent(sala -> model.addAttribute("sala", sala));
-        return "admin/salas/add";
+        cineSedeService.findByIdCineSede(idCineSedeRetorna).ifPresent(salas -> model.addAttribute("salas", salas));
+        return "admin/cines/salas/add";
     }
 
     @PostMapping("/admin/salas/delete/{id}")

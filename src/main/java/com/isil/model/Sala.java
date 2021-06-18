@@ -36,7 +36,9 @@ public class Sala {
     @Column(name = "estado")
     private Integer estado;
 
+/*
     @DateTimeFormat(pattern = "dd-MM-yyyy")
+*/
     @Column(name = "fechaRegistro")
     private LocalDate fechaRegistro;
 
@@ -46,7 +48,7 @@ public class Sala {
 
     @DateTimeFormat(pattern = "dd-MM-yyyy")
     @Column(name = "admiModificacion")
-    private LocalDate admiModificacion;
+    private String admiModificacion;
 
     @OneToMany(mappedBy = "sala", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<Entrada> entradas;

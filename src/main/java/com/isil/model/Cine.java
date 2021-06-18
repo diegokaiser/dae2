@@ -19,7 +19,7 @@ public class Cine {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     @Column(name = "idCine")
-    private Long id;
+    private Long idCine;
 
     @Column(name = "nombre")
     private String nombre;
@@ -30,7 +30,9 @@ public class Cine {
     @Column(name = "logo")
     private String logo;
 
+/*
     @DateTimeFormat(pattern = "dd-MM-yyyy")
+*/
     @Column(name = "fechaRegistro")
     private LocalDate fechaRegistro;
 

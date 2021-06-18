@@ -34,70 +34,70 @@
 </style>
 
 <body>
-  <header>
-    <nav class="navbar navbar-expand-lg navbar-light p-0">
-      <a class="navbar-brand" href="/home/index.jsp">
-        <img src="https://estrenoshoyb.s3.amazonaws.com/images/logo.svg " alt=""><span>Solo estrenos</span>
-      </a>
-      <ul class="navbar-nav ml-auto">
-        <li>
-          <p>Bienvenido, Usuario!</p>
-        </li>
-        <li>
-          <a href="">Logout</a>
-        </li>
-      </ul>
-    </nav>
-  </header>
-  <!-- preloader -->
+<header>
+  <nav class="navbar navbar-expand-lg navbar-light p-0">
+    <a class="navbar-brand" href="/home/index.jsp">
+      <img src="https://estrenoshoyb.s3.amazonaws.com/images/logo.svg " alt=""><span>Solo estrenos</span>
+    </a>
+    <ul class="navbar-nav ml-auto">
+      <li>
+        <p>Bienvenido, Usuario!</p>
+      </li>
+      <li>
+        <a href="">Logout</a>
+      </li>
+    </ul>
+  </nav>
+</header>
+<!-- preloader -->
 
 
-  <div th:switch="peliculas" class="content nobg" >
-    <div>
-      <div class="banner-destacado"
-           th:each="pelicula : ${peliculas}"
-           th:object="${pelicula}"
-           th:if="${pelicula.destacada} == 1">
-        <div class="img">
-          <img th:src="'//estrenoshoyb.s3.amazonaws.com/images/' + ${pelicula.portadaDestacada}" alt="">
-        </div>
-        <div class="contenido">
-          <div class="contenido overlay">
-            <div class="titulo">
-              <h2>[[${pelicula.nombre}]]</h2>
-            </div>
-            <div class="timing">
+<div th:switch="peliculas" class="content nobg" >
+  <div>
+    <div class="banner-destacado"
+         th:each="pelicula : ${peliculas}"
+         th:object="${pelicula}"
+         th:if="${pelicula.destacada} == 1">
+      <div class="img">
+        <img th:src="'//estrenoshoyb.s3.amazonaws.com/images/' + ${pelicula.portadaDestacada}" alt="">
+      </div>
+      <div class="contenido">
+        <div class="contenido overlay">
+          <div class="titulo">
+            <h2>[[${pelicula.nombre}]]</h2>
+          </div>
+          <div class="timing">
               <span>
                 <i class="far fa-clock"></i>&nbsp;[[${pelicula.duracion}]]
               </span>
-            </div>
-            <div class="descripcion">
-              <p th:text="${pelicula.descripcion}">
-              </p>
-            </div>
-            <div class="info">
-              <p>
-                <strong>Protagonizan: </strong>[[${pelicula.protagonistas}]]
-              </p>
-              <p>
-                <strong>Género: </strong>[[${pelicula.genero}]]
-              </p>
-            </div>
-            <div class="cta">
-              <a th:href="@{/home/estrenos/{id} (id = ${pelicula.id}) }">
-                <i class="fas fa-play"></i>Comprar entradas
-              </a>
-            </div>
-            <div class="playtrailer">
-              <a th:href="${pelicula.trailer}" target="_blank">
-                <i class="far fa-play-circle"></i>Ver tráiler
-              </a>
-            </div>
+          </div>
+          <div class="descripcion">
+            <p th:text="${pelicula.descripcion}">
+            </p>
+          </div>
+          <div class="info">
+            <p>
+              <strong>Protagonizan: </strong>[[${pelicula.protagonistas}]]
+            </p>
+            <p>
+              <strong>Género: </strong>[[${pelicula.genero}]]
+            </p>
+          </div>
+          <div class="cta">
+            <a th:href="@{/home/estrenos/{id} (id = ${pelicula.id}) }">
+              <i class="fas fa-play"></i>Comprar entradas
+            </a>
+          </div>
+          <div class="playtrailer">
+            <a th:href="${pelicula.trailer}" target="_blank">
+              <i class="far fa-play-circle"></i>Ver tráiler
+            </a>
           </div>
         </div>
       </div>
+    </div>
 
-      <div class="home-grid">
+    <div class="home-grid">
       <div class="container-fluid">
         <div class="row">
           <div class="col">
@@ -112,9 +112,9 @@
         <div class="row pt-4">
           <div class="slider-ultimos">
             <div class="home-movie"
-               th:each="pelicula : ${peliculas}"
-               th:object="${pelicula}"
-               th:if="${pelicula.estado} == 1">
+                 th:each="pelicula : ${peliculas}"
+                 th:object="${pelicula}"
+                 th:if="${pelicula.estado} == 1">
               <div class="img">
                 <img th:src="'//estrenoshoyb.s3.amazonaws.com/images/' + ${pelicula.portada}" th:alt="${pelicula.nombre}">
               </div>
@@ -150,9 +150,9 @@
         <div class="row pt-4">
           <div class="slider-estrenos">
             <div class="home-movie"
-               th:each="pelicula : ${peliculas}"
-               th:object="${pelicula}"
-               th:if="${pelicula.estado} == 0">
+                 th:each="pelicula : ${peliculas}"
+                 th:object="${pelicula}"
+                 th:if="${pelicula.estado} == 0">
               <div class="img">
                 <img th:src="'//estrenoshoyb.s3.amazonaws.com/images/' +${pelicula.portada}" th:alt="${pelicula.nombre}">
               </div>
@@ -188,9 +188,9 @@
         <div class="row pt-4">
           <div class="slider-recomendados">
             <div class="home-movie"
-               th:each="pelicula : ${peliculas}"
-               th:object="${pelicula}"
-               th:if="${pelicula.recomendada} == 1">
+                 th:each="pelicula : ${peliculas}"
+                 th:object="${pelicula}"
+                 th:if="${pelicula.recomendada} == 1">
               <div class="img">
                 <img th:src="'//estrenoshoyb.s3.amazonaws.com/images/' +${pelicula.portada}" th:alt="${pelicula.nombre}">
               </div>
@@ -212,9 +212,9 @@
         </div>
       </div>
     </div>
-    </div>
   </div>
+</div>
 
-  <div th:replace="home/fragments/fragments.html :: homescripts"></div>
+<div th:replace="home/fragments/fragments.html :: homescripts"></div>
 </body>
 </html>

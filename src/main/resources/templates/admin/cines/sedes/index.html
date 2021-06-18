@@ -36,6 +36,7 @@
             <div class="page-title">
               <div class="title_left">
                 <h3>Cines registrados</h3>
+                <a th:href="@{/admin/cinesSede/add}" class="btn btn-primary  btn-sm text-white"><i class="fas fa-plus"></i>Agregar</a>
               </div>
             </div>
             <div class="clearfix"></div>
@@ -62,7 +63,7 @@
                             </thead>
                             <tbody>
                               <tr th:each="sede : ${cinesSede}" >
-                                <td th:text="${sede.id}"></td>
+                                <td th:text="${sede.idCineSede}"></td>
                                 <td th:text="${sede.nombre}"></td>
                                 <td th:text="${sede.direccion}"></td>
                                 <td th:text="${sede.distrito.nombre}"></td>
@@ -72,15 +73,15 @@
                                   <span th:case="0">No validado</span>
                                 </td>
 
-                                <td ><a th:href="@{'/admin/salas/'+${sede.id}}"> Ver Salas</a></td>
+                                <td ><a th:href="@{'/admin/salas/'+${sede.idCineSede}}"> Ver Salas</a></td>
                                 <td width="140" th:switch="${sede.estado}">
                                   <div class="admin-actions" th:case="1">
-                                    <a th:href="@{/admin/cinesSede/edit/{id} (id = ${sede.id}) }"  class="btn btn-primary text-left" style="width: 100%;"><i class="fa fa-pencil"></i>&nbsp;&nbsp;Editar</a>
-                                    <a  th:href="@{'/admin/cinesSede/estadoCineSede/'+${sede.id}+'/0' }"  class="btn btn-danger text-left" style="width: 100%;"><i class="fa fa-pencil"></i>&nbsp;&nbsp;Deshabilitar</a>
+                                    <a th:href="@{/admin/cinesSede/edit/{id} (id = ${sede.idCineSede}) }" class="btn btn-primary text-left" style="width: 100%;" > <i class="fas fa-pen"></i>&nbsp;&nbsp;Editar</a>
+                                    <a  th:href="@{'/admin/cinesSede/estadoCineSede/'+${sede.idCineSede}+'/0' }"  class="btn btn-danger text-left" style="width: 100%;"> <i class="fas fa-times"></i>&nbsp;&nbsp;Deshabilitar</a>
                                   </div>
                                   <div class="admin-actions" th:case="0">
-                                    <a th:href="@{/admin/cinesSede/edit/{id} (id = ${sede.id}) }"  class="btn btn-primary text-left" style="width: 100%;"><i class="fa fa-pencil"></i>&nbsp;&nbsp;Editar</a>
-                                    <a th:href="@{'/admin/cinesSede/estadoCineSede/'+${sede.id}+'/1' }"   class="btn btn-success text-left" style="width: 100%;"><i class="fa fa-check"></i>&nbsp;&nbsp;Habilitar</a>
+                                    <a th:href="@{/admin/cinesSede/edit/{id} (id = ${sede.idCineSede}) }"  class="btn btn-primary text-left" style="width: 100%;"> <i class="fas fa-pen"></i>&nbsp;&nbsp;Editar</a>
+                                    <a  th:href="@{'/admin/cinesSede/estadoCineSede/'+${sede.idCineSede}+'/1' }" class="btn btn-success text-left" style="width: 100%;"><i class="fa fa-check"></i>&nbsp;&nbsp;Habilitar</a>
                                   </div>
                                 </td>
                               </tr>

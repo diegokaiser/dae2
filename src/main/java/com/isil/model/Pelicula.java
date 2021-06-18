@@ -71,8 +71,10 @@ public class Pelicula {
     @Column(name = "portadaDestacada")
     private String portadaDestacada;
 
-    @Temporal(TemporalType.DATE)
+
+/*
     @DateTimeFormat(pattern = "dd-MM-yyyy")
+*/
     @Column(name = "fechaRegistro")
     private Date fechaRegistro;
 

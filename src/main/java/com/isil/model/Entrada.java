@@ -39,7 +39,9 @@ public class Entrada {
     @Column(name = "stock")
     private Integer stock;
 
+/*
     @DateTimeFormat(pattern = "dd-MM-yyyy")
+*/
     @Column(name = "fechaRegistro")
     private LocalDate fechaRegistro;
 
@@ -50,6 +52,7 @@ public class Entrada {
     @DateTimeFormat(pattern = "dd-MM-yyyy")
     @Column(name = "admiModificacion")
     private String admiModificacion;
+
 
  /*   @OneToMany(mappedBy="entrada", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<Pelicula> peliculas ;*/

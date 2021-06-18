@@ -27,7 +27,9 @@ public class TipoUsuario {
     @Column(name = "descripcion")
     private String descripcion;
 
+/*
     @DateTimeFormat(pattern = "dd-MM-yyyy")
+*/
     @Column(name = "fechaRegistro")
     private LocalDate fechaRegistro;
 

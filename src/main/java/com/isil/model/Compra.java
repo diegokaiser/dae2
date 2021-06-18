@@ -35,7 +35,9 @@ public class Compra {
     @Column(name = "estado")
     private Integer estado;
 
+/*
     @DateTimeFormat(pattern = "dd-MM-yyyy")
+*/
     @Column(name = "fechaCompra")
     private LocalDate fechaCompra;
 

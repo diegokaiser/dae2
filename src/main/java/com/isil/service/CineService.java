@@ -1,5 +1,6 @@
 package com.isil.service;
 
+import com.isil.model.CineSede;
 import org.springframework.stereotype.Service;
 import com.isil.model.Cine;
 import com.isil.repository.CineRepository;
@@ -47,5 +48,9 @@ public class CineService implements BaseService<Cine, Long> {
                     saveOrUpdate(cine);
                     return true;
                 }).orElse(false);
+    }
+
+    public Optional <List <Cine>> findByIdCine(Long id) {
+        return  Optional.of(cineRepository.findByIdCine(id));
     }
 }

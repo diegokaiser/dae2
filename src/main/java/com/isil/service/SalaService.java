@@ -45,6 +45,9 @@ public class SalaService implements BaseService<Sala, Long> {
         return  Optional.of(salaRepository.findByIdCineSede(id));
     }
 
+    public Optional <List <Sala>> findFirstByIdCineSede(Integer id) {
+        return  Optional.of(salaRepository.findFirstByIdCineSede(id));
+    }
     public boolean estadoSala(Long id,Integer estado){
         return findById(id).map(
                 sala -> {
@@ -53,4 +56,6 @@ public class SalaService implements BaseService<Sala, Long> {
                     return true;
                 }).orElse(false);
     }
+
+
 }
