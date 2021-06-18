@@ -50,10 +50,19 @@
           <!--Datos ocultos-->
           <input type="hidden" class="form-control" id="idPelicula" name="idPelicula" th:field="*{id}" th:readonly="true" >
           <input type="hidden" class="form-control" id="estado" name="estado" th:field="*{estado}" >
+          <input type="hidden" class="form-control" id="fechaRegistro" name="fechaRegistro" th:field="*{fechaRegistro}" >
 
           <!-- fin de datos ocultos-->
 
-          <h3 th:text="'Editando a '+${pelicula.nombre} "></h3>
+
+          <!-- mostrar titulo editando o agregando dependiendo de lo solicitado
+-->
+          <div th:if="${pelicula.id>0}">
+            <h3 class="mb-3" th:text="'Editando a '+${pelicula.nombre} "></h3>
+          </div>
+          <div th:if="${pelicula.id<0}">
+            <h3 class="mb-3"> Agregando nuevo Estreno</h3>
+          </div>
 
           <div class="form-group">
             <label for="nombre">Nombre:</label>

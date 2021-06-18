@@ -53,14 +53,18 @@
           <input type="hidden" class="form-control" id="fechaRegistro" name="fechaRegistro" th:field="*{fechaRegistro}" >
           <!-- fin de datos ocultos-->
 
-          <h3 th:text="'Editando entrada '+${entrada.idEntrada} "></h3>
+<!--
+            mostrar titulo editando o agregando dependiendo de lo solicitado
+-->
+          <div th:if="${entrada.idEntrada>0}">
+            <h3 class="mb-3" th:text="'Editando entrada '+${entrada.idEntrada} "></h3>
+          </div>
+          <div th:if="${entrada.idEntrada<0}">
+            <h3 class="mb-3"> Agregando nueva entrada</h3>
+          </div>
 
-<!--          <div class="form-group">
-            <label for="Pelicula">Pelicula:</label>
-            <input type="text" class="form-control" id="Pelicula" name="Pelicula" th:field="${entrada.pelicula.nombre}" >
-          </div>-->
           <div class="form-group">
-            <label for="idPelicula">Pelicula:</label>
+            <label for="idPelicula">Cine-Sucursal-sala:</label>
             <select class="custom-select" name="idSala" id="idSala" th:field="*{idSala}">
               <option th:each="sala:${salas}"
                       th:value="${sala.idSala}"
