@@ -1,5 +1,6 @@
 package com.isil.controller;
 
+import com.isil.service.PeliculaService;
 import com.isil.service.TipoUsuarioService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,10 +14,14 @@ import com.isil.service.UsuarioService;
 public class UsuarioController {
     private final UsuarioService usuarioService;
     private final TipoUsuarioService tipoUsuarioService;
+    private final PeliculaService peliculaService;
 
-    public UsuarioController(UsuarioService usuarioService, TipoUsuarioService tipoUsuarioService) {
+    public UsuarioController(UsuarioService usuarioService,
+                             TipoUsuarioService tipoUsuarioService,
+                             PeliculaService peliculaService) {
         this.usuarioService = usuarioService;
         this.tipoUsuarioService = tipoUsuarioService;
+        this.peliculaService = peliculaService;
     }
 
 
@@ -58,7 +63,8 @@ public class UsuarioController {
 
     /* login */
     @PostMapping("/home/login")
-    public String usuariosLogin() {
+    public String usuariosLogin(Model model) {
+        peliculaService.findAll().ifPresent(peliculas -> model.addAttribute("peliculas", peliculas));
         return "/home/login/index";
     }
 

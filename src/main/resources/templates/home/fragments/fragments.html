@@ -1,0 +1,180 @@
+<div th:fragment="styles">
+  <link rel="stylesheet" href="https://estrenoshoyb.s3.amazonaws.com/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://estrenoshoyb.s3.amazonaws.com/css/slick.css">
+  <link rel="stylesheet" href="https://estrenoshoyb.s3.amazonaws.com/css/style.css">
+  <link rel="stylesheet" type="text/css" href="https://estrenoshoyb.s3.amazonaws.com/fontawesome/css/all.min.css">
+</div>
+
+<div th:fragment="scripts">
+  <footer>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col">
+          <p>
+            &copy; SOLO ESTRENOS.
+          </p>
+          <p>
+            All Rigths Reserved.
+          </p>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <script src="https://estrenoshoyb.s3.amazonaws.com/js/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://estrenoshoyb.s3.amazonaws.com/js/slick.min.js"></script>
+  <script src="https://estrenoshoyb.s3.amazonaws.com/js/popper.min.js"></script>
+  <script src="https://estrenoshoyb.s3.amazonaws.com/js/bootstrap.min.js"></script>
+  <script src="https://estrenoshoyb.s3.amazonaws.com/js/all.js"></script>
+</div>
+
+<div th:fragment="homescripts">
+  <footer>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col">
+          <p>
+            &copy; SOLO ESTRENOS.
+          </p>
+          <p>
+            All Rigths Reserved.
+          </p>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <script src="https://estrenoshoyb.s3.amazonaws.com/js/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://estrenoshoyb.s3.amazonaws.com/js/slick.min.js"></script>
+  <script src="https://estrenoshoyb.s3.amazonaws.com/js/popper.min.js"></script>
+  <script src="https://estrenoshoyb.s3.amazonaws.com/js/bootstrap.min.js"></script>
+  <script src="https://estrenoshoyb.s3.amazonaws.com/js/all.js"></script>
+  <script>
+      $(function () {
+          $('.slider-ultimos').slick({
+              autoplay: true,
+              autoplaySpeed: 3000,
+              arrows: false,
+              centerPadding: '15px',
+              dots: false,
+              infinite: true,
+              slideToShow: 4,
+              slideToScroll: 1,
+              variableWidth: true,
+              responsive: [
+                  {
+                      breakpoint: 990,
+                      settings: {
+                          slideToShow: 3,
+                          slideToScroll: 1,
+                      }
+                  },
+                  {
+                      breakpoint: 768,
+                      settings: {
+                          slideToShow: 2,
+                          slideToScroll: 1,
+                      }
+                  },
+                  {
+                      breakpoint: 440,
+                      settings: {
+                          slideToShow: 1,
+                          slideToScroll: 1,
+                      }
+                  }
+              ]
+          });
+          $('.slider-estrenos').slick({
+              autoplay: true,
+              autoplaySpeed: 3000,
+              arrows: false,
+              centerPadding: '15px',
+              dots: false,
+              infinite: true,
+              slideToShow: 4,
+              slideToScroll: 1,
+              variableWidth: true,
+              responsive: [
+                  {
+                      breakpoint: 990,
+                      settings: {
+                          slideToShow: 3,
+                          slideToScroll: 1,
+                      }
+                  },
+                  {
+                      breakpoint: 768,
+                      settings: {
+                          slideToShow: 2,
+                          slideToScroll: 1,
+                      }
+                  },
+                  {
+                      breakpoint: 440,
+                      settings: {
+                          slideToShow: 1,
+                          slideToScroll: 1,
+                      }
+                  }
+              ]
+          });
+          $('.slider-recomendados').slick({
+              autoplay: true,
+              autoplaySpeed: 3000,
+              arrows: false,
+              centerPadding: '15px',
+              dots: false,
+              infinite: true,
+              slideToShow: 4,
+              slideToScroll: 1,
+              variableWidth: true,
+              responsive: [
+                  {
+                      breakpoint: 990,
+                      settings: {
+                          slideToShow: 3,
+                          slideToScroll: 1,
+                      }
+                  },
+                  {
+                      breakpoint: 768,
+                      settings: {
+                          slideToShow: 2,
+                          slideToScroll: 1,
+                      }
+                  },
+                  {
+                      breakpoint: 440,
+                      settings: {
+                          slideToShow: 1,
+                          slideToScroll: 1,
+                      }
+                  }
+              ]
+          });
+      });
+  </script>
+</div>
+
+<header th:fragment="header">
+  <nav class="navbar navbar-expand-lg navbar-light p-0">
+    <a class="navbar-brand" href="<%=request.getContextPath()%>/index.jsp">
+      <img src="https://estrenoshoyb.s3.amazonaws.com/images/logo.svg " alt=""><span>Solo estrenos</span>
+    </a>
+    <ul class="navbar-nav ml-auto"></ul>
+  </nav>
+</header>
+
+<footer th:fragment="footer">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col">
+        <p>
+          &copy; SOLO ESTRENOS.
+        </p>
+        <p>
+          All Rigths Reserved.
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
