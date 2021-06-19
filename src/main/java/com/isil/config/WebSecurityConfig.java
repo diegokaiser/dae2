@@ -40,7 +40,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .anyRequest().authenticated()
                 .and()
                 .formLogin()
-                    .loginPage("/login").permitAll()
+                    .loginPage("/login/index").permitAll()
                     .defaultSuccessUrl("/menu", true)
                     .usernameParameter("correo")
                     .passwordParameter("password")
@@ -51,7 +51,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                     .clearAuthentication(true)
                     .invalidateHttpSession(true)
                     .deleteCookies("JSESSIONID")
-                    .logoutSuccessUrl("/login")
+                    .logoutSuccessUrl("/login/index")
                 .and()
                     .headers()
                         .frameOptions().sameOrigin();
