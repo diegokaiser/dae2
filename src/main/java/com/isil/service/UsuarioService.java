@@ -2,18 +2,23 @@ package com.isil.service;
 
 import com.isil.model.Usuario;
 import com.isil.repository.UsuarioRepository;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
 @Service
+@Configuration
 public class UsuarioService implements BaseService<Usuario, Long> {
 
     private final UsuarioRepository usuarioRepository;
+    private final PasswordEncoder passwordEncoder;
 
-    public UsuarioService(UsuarioRepository usuarioRepository) {
+    public UsuarioService(UsuarioRepository usuarioRepository, PasswordEncoder passwordEncoder) {
         this.usuarioRepository = usuarioRepository;
+        this.passwordEncoder = passwordEncoder;
     }
 
 
@@ -29,6 +34,7 @@ public class UsuarioService implements BaseService<Usuario, Long> {
 
     @Override
     public Usuario saveOrUpdate(Usuario usuario) {
+        usuario.setContrasena(passwordEncoder.encode(usuario.getContrasena()));//setea la contra encriptada
         return usuarioRepository.save(usuario);
     }
 
@@ -41,9 +47,6 @@ public class UsuarioService implements BaseService<Usuario, Long> {
                 }).orElse(false);
     }
 
-    public Optional<Usuario> findByCorreoAndContrasena(String correo, String contrasena) {
-        return usuarioRepository.findByCorreoAndContrasena(correo,contrasena);
-    }
 
    public boolean estadoUsuario(Long id,Integer estado){
        return findById(id).map(
@@ -53,6 +56,9 @@ public class UsuarioService implements BaseService<Usuario, Long> {
                    return true;
                }).orElse(false);
    }
+
+
+
 
 
 }

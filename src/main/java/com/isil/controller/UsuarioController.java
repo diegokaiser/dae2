@@ -9,8 +9,10 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import com.isil.model.Usuario;
 import com.isil.service.UsuarioService;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
+@RequestMapping("/")
 public class UsuarioController {
     private final UsuarioService usuarioService;
     private final TipoUsuarioService tipoUsuarioService;

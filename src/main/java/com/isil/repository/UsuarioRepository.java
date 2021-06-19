@@ -12,8 +12,7 @@ import java.util.Optional;
 @Repository
 public interface UsuarioRepository extends JpaRepository<Usuario, Long> {
 
-    @Transactional(readOnly =true)// para que solo lea y no modifique
-    Optional<Usuario> findByCorreoAndContrasena(String correo, String contrasena);
+    Usuario findByCorreo(String correo);
 
     @Modifying
     @Query("update Usuario u set u.estado = :estado where u.id = :idUsuario")
