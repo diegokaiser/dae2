@@ -42,7 +42,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .formLogin()
                     .loginPage("/login").permitAll()
                     .defaultSuccessUrl("/menu", true)
-                    .usernameParameter("username")
+                    .usernameParameter("correo")
                     .passwordParameter("password")
                 .and()
                 .logout()
