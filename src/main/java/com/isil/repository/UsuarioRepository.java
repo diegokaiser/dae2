@@ -10,6 +10,6 @@ import java.util.Optional;
 public interface UsuarioRepository extends JpaRepository<Usuario, Long> {
 
     @Transactional(readOnly =true)// para que solo lea y no modifique
-    //Optional<Usuario> findByCorreoAndContrasena(String correo, String contrasena);
-    Usuario findByCorreo(String correo);
+    Optional<Usuario> findByCorreoAndContrasena(String correo, String contrasena);
+    //Usuario findByCorreo(String correo);
 }
