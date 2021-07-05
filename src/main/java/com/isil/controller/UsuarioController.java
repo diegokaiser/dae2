@@ -64,7 +64,7 @@ public class UsuarioController {
     }
 
     /* login */
-    @PostMapping("/home/login")
+    @GetMapping("/home/login")
     public String usuariosLogin(Model model) {
         peliculaService.findAll().ifPresent(peliculas -> model.addAttribute("peliculas", peliculas));
         return "/home/login/index";

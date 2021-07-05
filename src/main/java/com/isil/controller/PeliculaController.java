@@ -56,11 +56,11 @@ public class PeliculaController {
         return "redirect:/admin/estrenos/index";
     }
 
-    @GetMapping("/peliculasHome")
+/*    @GetMapping("/peliculasHome")
     public String peliculasHome(Model model) {
         peliculaService.findAll().ifPresent(peliculas -> model.addAttribute("peliculasHome", peliculas));
         return "home/login/index";
-    }
+    }*/
 
     @GetMapping("/admin/estrenos/estadoPelicula/{id}/{estado}")
     public String estadoEstreno(@PathVariable Long id,@PathVariable Integer estado) {
