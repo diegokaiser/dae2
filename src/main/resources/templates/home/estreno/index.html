@@ -2,51 +2,48 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org" >
 <head>
   <meta charset="UTF-8">
-  <!-- metas -->
-  <!-- styles -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <div th:replace="home/fragments/fragments.html :: styles"></div>
   <title>| Estrenos Hoy</title>
 </head>
 <body>
-  <!-- header -->
-  <div class="content">
+  <div class="content" >
+    <div th:replace="home/fragments/fragments.html :: header"></div>
     <div class="banner-destacado">
       <div class="img">
-        <img src="" alt="<%=pelicula.getNombre()%>">
+        <img th:src="'//estrenoshoyb.s3.amazonaws.com/images/' + ${peliculaDetalle.portadaDestacada}" alt="">
       </div>
-
       <div class="contenido">
         <div class="titulo">
-          <h2><%=pelicula.getNombre()%></h2>
+          <h2>[[${peliculaDetalle.nombre}]]</h2>
         </div>
         <div class="timing">
-          <span><i class="far fa-clock"></i> <%=pelicula.getDuracion()%></span>
+          <span><i class="far fa-clock"></i>&nbsp;[[${peliculaDetalle.duracion}]]</span>
         </div>
         <div class="descripcion">
-          <p>
-            <%=pelicula.getDescripcion()%>
+          <p th:text="${peliculaDetalle.descripcion}">
           </p>
         </div>
         <div class="info">
           <p>
-            <strong>Protagonizan: </strong><%=pelicula.getProtagonistas()%>
+            <strong>Protagonizan: </strong>[[${peliculaDetalle.protagonistas}]]
           </p>
           <p>
-            <strong>Género: </strong><%=pelicula.getGenero()%>
+            <strong>Género: </strong>[[${peliculaDetalle.genero}]]
           </p>
         </div>
         <div class="cta">
-
-          <a href="<%=request.getContextPath()%>/EntradaController?processing=seleccionarEntrada&idPelicula=<%=pelicula.getIdPelicula()%>" data-id="<%=pelicula.getIdPelicula()%>">
+          <a th:href="@{/home/estrenos/entrada/{id} (id = ${peliculaDetalle.id}) }">
             <i class="fas fa-play"></i>Comprar entradas
           </a>
-          <a href="<%=request.getContextPath()%>/EntradaController?processing=crearAviso&idPelicula=<%=pelicula.getIdPelicula()%>" data-id="<%=pelicula.getIdPelicula()%>">
+          <!--<a href="<%=request.getContextPath()%>/EntradaController?processing=crearAviso&idPelicula=<%=pelicula.getIdPelicula()%>" data-id="<%=pelicula.getIdPelicula()%>">
             <i class="far fa-clock"></i>
-            <!--<strong>Faltan: </strong>-->
             <span id="fechaEstreno" data-estreno="<%=pelicula.getFechaEstreno()%>" data-pri="" data-sec=""></span>
-          </a>
+          </a>-->
         </div>
         <div class="playtrailer">
-          <a href="<%=pelicula.getTrailer()%>" target="_blank">
+          <a th:href="${peliculaDetalle.trailer}" target="_blank">
             <i class="far fa-play-circle"></i>
             Ver trailer
           </a>
@@ -54,7 +51,9 @@
       </div>
     </div>
   </div>
-  <!-- footer -->
-  <!-- scripts -->
+<!--
+  <div th:replace="home/fragments/fragments.html :: footer"></div>
+-->
+  <div th:replace="home/fragments/fragments.html :: scripts"></div>
 </body>
 </html>

@@ -6,7 +6,6 @@ import lombok.NoArgsConstructor;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
-import java.util.Date;
 import java.time.LocalDate;
 import java.util.List;
 
@@ -76,7 +75,7 @@ public class Pelicula {
     @DateTimeFormat(pattern = "dd-MM-yyyy")
 */
     @Column(name = "fechaRegistro")
-    private Date fechaRegistro;
+    private LocalDate fechaRegistro;
 
     @DateTimeFormat(pattern = "dd-MM-yyyy")
     @Column(name = "fechaModificacion")

@@ -57,7 +57,6 @@
                                 <th scope="col">logo</th>
                                 <th scope="col">Fecha Registro</th>
                                 <th scope="col">Estado</th>
-                                <th scope="col">Sucursales</th>
                                 <th scope="col">Acciones</th>
                               </tr>
                             </thead>
@@ -71,14 +70,15 @@
                                   <span th:case="1">Validado</span>
                                   <span th:case="0">No validado</span>
                                 </td>
-                                <td ><a th:href="@{'/admin/cineSede/'+${cine.idCine}}"> Ver Sucursales</a></td>
 
                                 <td width="140" th:switch="${cine.estado}">
                                   <div class="admin-actions" th:case="1">
+                                    <a th:href="@{'/admin/cineSede/'+${cine.idCine}}" class="btn btn-info text-left" style="width: 100%;"><i class="fas fa-info"></i> Ver Sucursales</a>
                                     <a th:href="@{/admin/cines/edit/{id} (id = ${cine.idCine}) }"  class="btn btn-primary text-left" style="width: 100%;" > <i class="fas fa-pen"></i>&nbsp;&nbsp;Editar</a>
                                     <a  th:href="@{'/admin/estrenos/estadoCine/'+${cine.idCine}+'/0' }"  class="btn btn-danger text-left" style="width: 100%;"> <i class="fas fa-times"></i>&nbsp;&nbsp;Deshabilitar</a>
                                   </div>
                                   <div class="admin-actions" th:case="0">
+                                    <a th:href="@{'/admin/cineSede/'+${cine.id}}" class="btn btn-info text-left" style="width: 100%;"><i class="fas fa-info"></i> Ver Sucursales</a>
                                     <a th:href="@{/admin/cines/edit/{id} (id = ${cine.idCine}) }"  class="btn btn-primary text-left" style="width: 100%;"> <i class="fas fa-pen"></i>&nbsp;&nbsp;Editar</a>
                                     <a  th:href="@{'/admin/estrenos/estadoCine/'+${cine.idCine}+'/1' }"  class="btn btn-success text-left" style="width: 100%;"><i class="fa fa-check"></i>&nbsp;&nbsp;Habilitar</a>
                                   </div>

@@ -2,6 +2,7 @@ package com.isil.service;
 
 
 import com.isil.model.Entrada;
+import com.isil.model.Pelicula;
 import com.isil.repository.EntradaRepository;
 import org.springframework.stereotype.Service;
 
@@ -21,7 +22,9 @@ public class EntradaService implements BaseService<Entrada, Long> {
     public Optional<Entrada> findById(Long id) {
         return entradaRepository.findById(id);
     }
-
+    public Optional <List<Entrada>> findByIdPelicula(Integer id) {
+        return Optional.of(entradaRepository.findByIdPelicula(id));
+    }
     @Override
     public Optional<List<Entrada>> findAll() {
         return Optional.of(entradaRepository.findAll());

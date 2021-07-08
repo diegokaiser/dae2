@@ -4,25 +4,47 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-  <link rel="stylesheet" href="https://estrenoshoyb.s3.amazonaws.com/css/bootstrap.min.css">
-  <link rel="stylesheet" href="https://estrenoshoyb.s3.amazonaws.com/css/slick.css">
-  <link rel="stylesheet" href="https://estrenoshoyb.s3.amazonaws.com/css/style.css">
-  <link rel="stylesheet" type="text/css" href="https://estrenoshoyb.s3.amazonaws.com/fontawesome/css/all.min.css">
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css" integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk" crossorigin="anonymous">
+  <div th:replace="home/fragments/fragments.html :: styles"></div>
   <title>Estrenos Hoy</title>
 </head>
+<style type="text/css">
+    .for_slick_slider{
+        display: flex;
+    }
+
+    .for_slick_slider .item{
+        width: 350px;
+        height: 250px;
+        position: relative;
+    }
+
+    .for_slick_slider .item .overlay{
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 350px;
+        height: 250px;
+        background: rgba (0,0,0,0.10);
+    }
+
+    .for_slick_slider .item img{
+        width: 350px;
+        height: 250px;
+    }
+</style>
+
 <body>
 <header>
   <nav class="navbar navbar-expand-lg navbar-light p-0">
-    <a class="navbar-brand" href="/home/index.jsp">
+    <a class="navbar-brand" th:href="@{/home/login}">
       <img src="https://estrenoshoyb.s3.amazonaws.com/images/logo.svg " alt=""><span>Solo estrenos</span>
     </a>
     <ul class="navbar-nav ml-auto">
       <li>
-        <p>Bienvenido, Usuario!</p>
+        <p th:text="${'Bienvendo '+session.sessionUser.nombre+' '+session.sessionUser.apellido}" ></p>
       </li>
       <li>
-        <a href="">Logout</a>
+        <a href="/logout">Logout</a>
       </li>
     </ul>
   </nav>
@@ -30,52 +52,50 @@
 <!-- preloader -->
 
 
-
-<div th:switch="peliculasHome" class="content nobg">
-  <div th:case="*">
-    <div th:each=" peli: ${peliculasHome}" class="banner-destacado">
+<div th:switch="peliculas" class="content nobg" >
+  <div>
+    <div class="banner-destacado"
+         th:each="pelicula : ${peliculas}"
+         th:object="${pelicula}"
+         th:if="${pelicula.destacada} == 1">
       <div class="img">
-        <img src="images/blackwidow_banner-dest.webp" alt="">
-
+        <img th:src="'//estrenoshoyb.s3.amazonaws.com/images/' + ${pelicula.portadaDestacada}" alt="">
       </div>
       <div class="contenido">
         <div class="contenido overlay">
           <div class="titulo">
-            <h2>Titulo</h2>
+            <h2>[[${pelicula.nombre}]]</h2>
           </div>
           <div class="timing">
-                          <span >
-                              <i class="far fa-clock"></i> <span th:text="${peli.duracion}"></span>
-
-                          </span>
+              <span>
+                <i class="far fa-clock"></i>&nbsp;[[${pelicula.duracion}]]
+              </span>
           </div>
-          <div class="description">
-            <p>
-              <span th:text="${peli.descripcion}"></span>
+          <div class="descripcion">
+            <p th:text="${pelicula.descripcion}">
             </p>
           </div>
           <div class="info">
             <p>
-              <strong>Protagonizan: </strong><span th:text="${peli.protagonistas}"></span>
+              <strong>Protagonizan: </strong>[[${pelicula.protagonistas}]]
             </p>
             <p>
-              <strong>Género: </strong><span th:text="${peli.genero}"></span>
+              <strong>Género: </strong>[[${pelicula.genero}]]
             </p>
           </div>
           <div class="cta">
-            <a href="">
+            <a th:href="@{/home/estrenos/{id} (id = ${pelicula.id}) }">
               <i class="fas fa-play"></i>Comprar entradas
             </a>
           </div>
           <div class="playtrailer">
-            <a href="" target="_blank">
+            <a th:href="${pelicula.trailer}" target="_blank">
               <i class="far fa-play-circle"></i>Ver tráiler
             </a>
           </div>
         </div>
       </div>
     </div>
-    <!--section -&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#445;&#45;&#45;&#45;&#45;&#45;&#445;&#45;&#45;&#45;&#45;&#45;&#445;&#45;&#45;&#45;&#45;&#45;&#45;-->
 
     <div class="home-grid">
       <div class="container-fluid">
@@ -91,19 +111,22 @@
         </div>
         <div class="row pt-4">
           <div class="slider-ultimos">
-            <div class="home-movie">
+            <div class="home-movie"
+                 th:each="pelicula : ${peliculas}"
+                 th:object="${pelicula}"
+                 th:if="${pelicula.estado} == 1">
               <div class="img">
-                <img src="images/var.portada.jpg" alt="var.nombre">
+                <img th:src="'//estrenoshoyb.s3.amazonaws.com/images/' + ${pelicula.portada}" th:alt="${pelicula.nombre}">
               </div>
               <div class="contenido">
                 <div class="titulo">
-                  <h4>var.nombre</h4>
+                  <h4 th:text="${pelicula.nombre}"></h4>
                 </div>
                 <div class="timing">
-                  <span>var.duracion</span>
+                  <span th:text="${pelicula.duracion}"></span>
                 </div>
                 <div class="cta">
-                  <a href="">
+                  <a th:href="@{/home/estrenos/{id} (id = ${pelicula.id}) }">
                     <i class="fas fa-play"></i>Comprar entradas
                   </a>
                 </div>
@@ -126,19 +149,22 @@
         </div>
         <div class="row pt-4">
           <div class="slider-estrenos">
-            <div class="home-movie">
+            <div class="home-movie"
+                 th:each="pelicula : ${peliculas}"
+                 th:object="${pelicula}"
+                 th:if="${pelicula.estado} == 0">
               <div class="img">
-                <img src="images/var.portada.jpg" alt="var.nombre">
+                <img th:src="'//estrenoshoyb.s3.amazonaws.com/images/' +${pelicula.portada}" th:alt="${pelicula.nombre}">
               </div>
               <div class="contenido">
                 <div class="titulo">
-                  <h4>var.nombre</h4>
+                  <h4 th:text="${pelicula.nombre}"></h4>
                 </div>
                 <div class="timing">
-                  <span>var.duracion</span>
+                  <span th:text="${pelicula.duracion}"></span>
                 </div>
                 <div class="cta">
-                  <a href="">
+                  <a th:href="@{/home/estrenos/{id} (id = ${pelicula.id}) }">
                     <i class="fas fa-play"></i>Comprar entradas
                   </a>
                 </div>
@@ -161,19 +187,22 @@
         </div>
         <div class="row pt-4">
           <div class="slider-recomendados">
-            <div class="home-movie">
+            <div class="home-movie"
+                 th:each="pelicula : ${peliculas}"
+                 th:object="${pelicula}"
+                 th:if="${pelicula.recomendada} == 1">
               <div class="img">
-                <img src="images/var.portada.jpg" alt="var.nombre">
+                <img th:src="'//estrenoshoyb.s3.amazonaws.com/images/' +${pelicula.portada}" th:alt="${pelicula.nombre}">
               </div>
               <div class="contenido">
                 <div class="titulo">
-                  <h4>var.nombre</h4>
+                  <h4 th:text="${pelicula.nombre}"></h4>
                 </div>
                 <div class="timing">
-                  <span>var.duracion</span>
+                  <span th:text="${pelicula.duracion}"></span>
                 </div>
                 <div class="cta">
-                  <a href="">
+                  <a th:href="@{/home/estrenos/{id} (id = ${pelicula.id}) }">
                     <i class="fas fa-play"></i>Comprar entradas
                   </a>
                 </div>
@@ -186,64 +215,6 @@
   </div>
 </div>
 
-<footer>
-  <div class="container-fluid">
-    <div class="row">
-      <div class="col">
-        <p>
-          &copy; SOLO ESTRENOS.
-        </p>
-        <p>
-          All Rigths Reserved.
-        </p>
-      </div>
-    </div>
-  </div>
-</footer>
-<script src="https://estrenoshoyb.s3.amazonaws.com/js/jquery-3.5.1.slim.min.js"></script>
-<script src="https://estrenoshoyb.s3.amazonaws.com/js/slick.min.js"></script>
-<script src="https://estrenoshoyb.s3.amazonaws.com/js/popper.min.js"></script>
-<script src="https://estrenoshoyb.s3.amazonaws.com/js/bootstrap.min.js"></script>
-<script src="https://estrenoshoyb.s3.amazonaws.com/js/all.js"></script>
+<div th:replace="home/fragments/fragments.html :: homescripts"></div>
 </body>
 </html>
-
-<!--
-
-<!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org" >
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-  <link rel="stylesheet" href="https://estrenoshoyb.s3.amazonaws.com/css/bootstrap.min.css">
-  <link rel="stylesheet" href="https://estrenoshoyb.s3.amazonaws.com/css/slick.css">
-  <link rel="stylesheet" href="https://estrenoshoyb.s3.amazonaws.com/css/style.css">
-  <link rel="stylesheet" type="text/css" href="https://estrenoshoyb.s3.amazonaws.com/fontawesome/css/all.min.css">
-  <title>Estrenos Hoy</title>
-</head>
-
-<div th:switch="peliculasHome">
-  <div th:case="*">
-    <table class="table">
-      <thead class="thead-dark">
-      <tr>
-        <th scope="col">Nombre Pelicula</th>
-        <th scope="col">Descripcion pelicula</th>
-        <th scope="col">Pais Pelicula</th>
-        <th></th>
-      </tr>
-      </thead>
-      <tbody>
-      <tr th:each=" peli: ${peliculasHome}">
-        <th scope="row" th:text="${peli.nombre}"></th>
-        <td th:text="${peli.descripcion}"></td>
-        <td th:text="${peli.pais}"></td>
-        <td th:text="${peli.getNombre()}"></td>
-
-      </tr>
-      </tbody>
-    </table>
-  </div>
-
-</div>-->

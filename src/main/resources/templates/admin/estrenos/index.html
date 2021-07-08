@@ -58,17 +58,7 @@
                                 <th scope="col">Fecha de Estreno</th>
                                 <th scope="col">País</th>
                                 <th scope="col">Subtitulos</th>
-<!--
-                                <th scope="col">Doblada</th>
-                             <th scope="col">Descripción</th>
-                                <th scope="col">Género</th>
-                                <th scope="col">Trailer</th>
-                                <th scope="col">Recomendada</th>
-                                <th scope="col">Portadas</th>
-                                <th scope="col">Destacada</th>
-                                <th scope="col">Protagonistas</th>-->
                                 <th scope="col">Estado</th>
-                                <th scope="col">Mas detalles</th>
                                 <th scope="col">Acciones</th>
                               </tr>
                             </thead>
@@ -83,40 +73,18 @@
                                   <span th:case="1">Sí</span>
                                   <span th:case="0">No</span>
                                 </td>
- <!--
-                                <td th:switch="${estreno.doblada}">
-                                  <span th:case="1">Sí</span>
-                                  <span th:case="0">No</span>
-                                </td>
-                           <td th:text="${estreno.descripcion}" ></td>
-                                <td th:text="${estreno.genero}"></td>
-                                <td><a th:href="${estreno.trailer}">Ver Trailer</a></td>
-                                <td th:switch="${estreno.recomendada}">
-                                  <span th:case="1">Sí</span>
-                                  <span th:case="0">No</span>
-                                </td>
-                                <td>
-                                  <span th:text="${estreno.portada}"></span>
-                                  <span th:text="${estreno.portadaDestacada}"></span>
-                                </td>
-                                <td th:switch="${estreno.destacada}">
-                                  <span th:case="1">Sí</span>
-                                  <span th:case="0">No</span>
-                                </td>
-                                <td th:text="${estreno.protagonistas}"></td>
-                 -->
                                 <td th:switch="${estreno.estado}">
                                   <span th:case="1">Validado</span>
                                   <span th:case="0">No validado</span>
-                                <td ><a th:href="@{'/admin/estrenosDetalles/edit/'+${estreno.id}}"> Ver mas detalles</a></td>
-
-
+                                </td>
                                 <td width="140" th:switch="${estreno.estado}">
                                   <div class="admin-actions" th:case="1">
+                                    <a th:href="@{'/admin/estrenosDetalles/edit/'+${estreno.id}}" class="btn btn-info text-left" style="width: 100%;"><i class="fas fa-info"></i> Ver mas detalles</a>
                                     <a th:href="@{/admin/estrenos/edit/{id} (id = ${estreno.id}) }"   class="btn btn-primary text-left" style="width: 100%;" > <i class="fas fa-pen"></i>&nbsp;&nbsp;Editar</a>
                                     <a   th:href="@{'/admin/estrenos/estadoPelicula/'+${estreno.id}+'/0' }"  class="btn btn-danger text-left" style="width: 100%;"> <i class="fas fa-times"></i>&nbsp;&nbsp;Deshabilitar</a>
                                   </div>
                                   <div class="admin-actions" th:case="0">
+                                    <a th:href="@{'/admin/estrenosDetalles/edit/'+${estreno.id}}" class="btn btn-info text-left" style="width: 100%;"><i class="fas fa-info"></i> Ver mas detalles</a>
                                     <a th:href="@{/admin/estrenos/edit/{id} (id = ${estreno.id}) }"   class="btn btn-primary text-left" style="width: 100%;"> <i class="fas fa-pen"></i>&nbsp;&nbsp;Editar</a>
                                     <a  th:href="@{'/admin/estrenos/estadoPelicula/'+${estreno.id}+'/1' }"  class="btn btn-success text-left" style="width: 100%;"><i class="fa fa-check"></i>&nbsp;&nbsp;Habilitar</a>
                                   </div>

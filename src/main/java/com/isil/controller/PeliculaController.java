@@ -56,15 +56,21 @@ public class PeliculaController {
         return "redirect:/admin/estrenos/index";
     }
 
-    @GetMapping("/peliculasHome")
+/*    @GetMapping("/peliculasHome")
     public String peliculasHome(Model model) {
         peliculaService.findAll().ifPresent(peliculas -> model.addAttribute("peliculasHome", peliculas));
         return "home/login/index";
-    }
+    }*/
 
     @GetMapping("/admin/estrenos/estadoPelicula/{id}/{estado}")
     public String estadoEstreno(@PathVariable Long id,@PathVariable Integer estado) {
         peliculaService.estadoPelicula(id,estado);
         return "redirect:/admin/estrenos";
+    }
+
+    @GetMapping("/home/estrenos/{id}")
+    public String peliculaDetalle(@PathVariable Long id, Model model) {
+        peliculaService.findById(id).ifPresent(pelicula -> model.addAttribute("peliculaDetalle", pelicula));
+        return "home/estreno/index";
     }
 }

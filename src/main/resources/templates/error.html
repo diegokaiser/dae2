@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" >
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <link rel="stylesheet" href="https://estrenoshoyb.s3.amazonaws.com/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://estrenoshoyb.s3.amazonaws.com/css/slick.css">
+  <link rel="stylesheet" href="https://estrenoshoyb.s3.amazonaws.com/css/style.css">
+  <link rel="stylesheet" type="text/css" href="https://estrenoshoyb.s3.amazonaws.com/fontawesome/css/all.min.css">
+  <title>Acceso de usuarios | Solo Estrenos</title>
+</head>
+<body>
+<!-- header -->
+<header class="headertop">
+  <nav class="navbar navbar-expand-lg navbar-light p-0">
+    <a class="navbar-brand" th:href="@{/home/login}">
+      <img src="https://estrenoshoyb.s3.amazonaws.com/images/logo.svg " alt=""><span>Solo estrenos</span>
+    </a>
+  </nav>
+</header>
+
+<div class="bkg_video">
+  <video autoplay loop>
+    <source src="https://estrenoshoyb.s3.amazonaws.com/images/blackwidow_banner-dest.webm">
+  </video>
+</div>
+<div class="content">
+  <div class="form">
+
+    <form action="" method="POST">
+      <input type="hidden" id="processing" name="processing" value="comprarEntrada">
+
+
+      <h2 class="text-white text-center my-4">¡Ches...!</h2>
+      <h4 class="text-white text-center mt-3">Hubo un problema con tus datos.</h4>
+      <p class="text-center my-4">Por favor, revisalos e intenta nuevamente.</p>
+      <a th:href="@{/home/login}" class="btn btn-primary btn-block my-4">Intertar nuevamente</a>
+    </form>
+  </div>
+</div>
+<footer class="p-3">
+  <div class="container-fluid ">
+    <div class="row">
+      <div class="col">
+        <p>
+          &copy; SOLO ESTRENOS.
+        </p>
+        <p>
+          All Rigths Reserved.
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+<script src="https://estrenoshoyb.s3.amazonaws.com/js/jquery-3.5.1.slim.min.js"></script>
+<script src="https://estrenoshoyb.s3.amazonaws.com/js/slick.min.js"></script>
+<script src="https://estrenoshoyb.s3.amazonaws.com/js/popper.min.js"></script>
+<script src="https://estrenoshoyb.s3.amazonaws.com/js/bootstrap.min.js"></script>
+<script src="https://estrenoshoyb.s3.amazonaws.com/js/all.js"></script>
+<!-- scripts -->
+
+
+
+
