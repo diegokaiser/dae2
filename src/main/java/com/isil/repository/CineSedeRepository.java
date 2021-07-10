@@ -29,5 +29,6 @@ public interface CineSedeRepository extends JpaRepository<CineSede, Long> {
     List<CineSede> findByIdCineSede(Long idCineSede);
 
 
+
 }
 

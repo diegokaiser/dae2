@@ -34,7 +34,7 @@
           </p>
         </div>
         <div class="cta">
-          <a th:href="@{/home/entrada/comprar/{id} (id = ${peliculaDetalle.id}) }">
+          <a th:href="@{/home/estrenos/entrada/{id} (id = ${peliculaDetalle.id}) }">
             <i class="fas fa-play"></i>Comprar entradas
           </a>
           <!--<a href="<%=request.getContextPath()%>/EntradaController?processing=crearAviso&idPelicula=<%=pelicula.getIdPelicula()%>" data-id="<%=pelicula.getIdPelicula()%>">
@@ -51,7 +51,9 @@
       </div>
     </div>
   </div>
+<!--
   <div th:replace="home/fragments/fragments.html :: footer"></div>
+-->
   <div th:replace="home/fragments/fragments.html :: scripts"></div>
 </body>
 </html>

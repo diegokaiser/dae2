@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" >
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <link rel="stylesheet" href="https://estrenoshoyb.s3.amazonaws.com/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://estrenoshoyb.s3.amazonaws.com/css/slick.css">
+  <link rel="stylesheet" href="https://estrenoshoyb.s3.amazonaws.com/css/style.css">
+  <link rel="stylesheet" type="text/css" href="https://estrenoshoyb.s3.amazonaws.com/fontawesome/css/all.min.css">
+  <title>Acceso de usuarios | Solo Estrenos</title>
+</head>
+<body>
+<!-- header -->
+<header class="headertop">
+  <nav class="navbar navbar-expand-lg navbar-light p-0">
+    <a class="navbar-brand" th:href="@{/home/login}">
+      <img src="https://estrenoshoyb.s3.amazonaws.com/images/logo.svg " alt=""><span>Solo estrenos</span>
+    </a>
+  </nav>
+</header>
+
+<div class="bkg_video">
+  <video autoplay loop>
+    <source src="https://estrenoshoyb.s3.amazonaws.com/images/blackwidow_banner-dest.webm">
+  </video>
+</div>
+<div class="content">
+  <div class="form">
+
+    <form method="POST" th:action="@{/home/estrenos/entrada}" th:object="${entradaObj}">
+
+      <h2>Entradas para: </h2>
+      <h4 class="text-center" th:text="${session.sessionUser.nombre+' '+session.sessionUser.apellido}" ></h4>
+      <input type="text" class="form-control" id="precio" name="precio" th:field="*{precio}" th:readonly="true" th:hidden="true">
+
+
+
+
+      <!-- Si se estrena en varios cines -->
+      <!--th:field="*{idSala}-->
+        <div class="form-group">
+            <label for="Entrada">Cine-Sucursal-sala:</label>
+            <select class="custom-select" name="Entrada" id="Entrada" th:field="*{tipo}">
+                <option th:each="entrad:${entrada}"
+                        th:value="${session.sessionUser.id+'-'+entrad.idEntrada+'-'+entrad.sala.cineSede.cine.nombre+'-'+entrad.sala.cineSede.nombre+'-'+entrad.sala.numero}"
+                        th:text="${entrad.sala.cineSede.cine.nombre+'-'+entrad.sala.cineSede.nombre+'-'+entrad.sala.numero}"
+                        th:selected="${entrad.idEntrada}"></option>
+            </select>
+        </div>
+
+
+    <div class="form-group pt-4">
+      <label for="numeroEntradas">Numero Entradas:</label>
+      <select type="number" class="custom-select" id="numeroEntradas" name="numeroEntradas" th:field="*{stock}">
+        <option th:value="1" th:text="1"></option>
+        <option th:value="2" th:text="2"></option>
+      </select>
+    </div>
+
+
+      <div class="form-group">
+        <button type="submit"  class="btn btn-primary my-4"> Comprar entrada </button>
+      </div>
+    </form>
+
+  </div>
+</div>
+<footer class="p-3">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col">
+        <p>
+          &copy; SOLO ESTRENOS.
+        </p>
+        <p>
+          All Rigths Reserved.
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+<script src="https://estrenoshoyb.s3.amazonaws.com/js/jquery-3.5.1.slim.min.js"></script>
+<script src="https://estrenoshoyb.s3.amazonaws.com/js/slick.min.js"></script>
+<script src="https://estrenoshoyb.s3.amazonaws.com/js/popper.min.js"></script>
+<script src="https://estrenoshoyb.s3.amazonaws.com/js/bootstrap.min.js"></script>
+<script src="https://estrenoshoyb.s3.amazonaws.com/js/alla.js"></script>
+<!-- scripts -->
+
+

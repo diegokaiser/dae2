@@ -12,8 +12,13 @@
             <img src="https://estrenoshoyb.s3.amazonaws.com/admin/images/img.jpg" alt="">
           </a>
           <div class="dropdown-menu dropdown-usermenu pull-right" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item"  href="login.html"><i class="fa fa-sign-out pull-right"></i> Log Out</a>
+            <form class="d-flex" action="/logout" method="get">
+              <button class=" fa fa-sign-out pull-right"  type="submit">Logout</button>
+            </form>
           </div>
+        </li>
+        <li>
+          <h2 class="font-weight-bold" th:text="${session.sessionUser.nombre+' '+session.sessionUser.apellido}" ></h2>
         </li>
       </ul>
     </nav>
@@ -25,7 +30,7 @@
 <div th:fragment="side" class="col-md-3 left_col">
   <div class="left_col scroll-view">
     <div class="navbar nav_title" style="border: 0;">
-      <a href="index.html" class="site_title"><i class="fas fa-ticket-alt"></i> <span>Solo Entradas</span></a>
+      <a th:href="@{/admin/usuarios}" class="site_title"><i class="fas fa-ticket-alt"></i> <span>Solo Entradas</span></a>
     </div>
     <div class="clearfix"></div>
     <!-- menu profile quick info -->
@@ -34,7 +39,9 @@
         <img src="https://estrenoshoyb.s3.amazonaws.com/admin/images/img.jpg" alt="..." class="img-circle profile_img">
       </div>
       <div class="profile_info">
-        <span>Bienvenido,<br></span>
+        <span>Bienvenido,</span> <p th:text="${session.sessionUser.nombre+' '+session.sessionUser.apellido}" ></p>
+
+
         <span></span>
         <h2></h2>
       </div>

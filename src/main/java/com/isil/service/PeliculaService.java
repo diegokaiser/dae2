@@ -27,6 +27,7 @@ public class PeliculaService implements BaseService<Pelicula, Long> {
         return Optional.of(peliculaRepository.findAll());
     }
 
+
     @Override
     public Pelicula saveOrUpdate(Pelicula pelicula) {
         return peliculaRepository.save(pelicula);
@@ -49,4 +50,8 @@ public class PeliculaService implements BaseService<Pelicula, Long> {
                     return true;
                 }).orElse(false);
     }
+    public Optional<List<Pelicula>> findAllByEstado(Integer estado) {
+        return Optional.of(peliculaRepository.findByEstado(estado));
+    }
+
 }

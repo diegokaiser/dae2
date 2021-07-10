@@ -1,8 +1,10 @@
 package com.isil.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
@@ -42,7 +44,6 @@ public class Cine {
 
     @Column(name = "admiModificacion")
     private String admiModificacion;
-
 
     @OneToMany(mappedBy = "cine", fetch = FetchType.LAZY, cascade=CascadeType.ALL)
     private List<CineSede> CineSede;

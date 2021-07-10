@@ -1,29 +1,32 @@
 package com.isil.controller;
 
+import com.isil.service.IsilUserDetailsService;
 import com.isil.service.PeliculaService;
 import com.isil.service.TipoUsuarioService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 import com.isil.model.Usuario;
 import com.isil.service.UsuarioService;
-import org.springframework.web.bind.annotation.RequestMapping;
+
+import javax.servlet.http.HttpSession;
 
 @Controller
+@SessionAttributes("SessionUser")
 @RequestMapping("/")
 public class UsuarioController {
     private final UsuarioService usuarioService;
     private final TipoUsuarioService tipoUsuarioService;
     private final PeliculaService peliculaService;
+    private final IsilUserDetailsService isilUserDetailsService;
 
     public UsuarioController(UsuarioService usuarioService,
                              TipoUsuarioService tipoUsuarioService,
-                             PeliculaService peliculaService) {
+                             PeliculaService peliculaService, IsilUserDetailsService isilUserDetailsService) {
         this.usuarioService = usuarioService;
         this.tipoUsuarioService = tipoUsuarioService;
         this.peliculaService = peliculaService;
+        this.isilUserDetailsService = isilUserDetailsService;
     }
 
 
@@ -33,7 +36,7 @@ public class UsuarioController {
         usuarioService.findAll().ifPresent(usuarios -> model.addAttribute("usuarios", usuarios));
         return "admin/usuarios/index";
     }
-
+//Registro desde admi
     @GetMapping("/admin/usuarios/add")
     public String usuariosAdd(Model model) {
         model.addAttribute("usuario", new Usuario());
@@ -47,6 +50,20 @@ public class UsuarioController {
         usuarioService.saveOrUpdate(usuarioEdit);
         return "redirect:/admin/usuarios";
     }
+    //Registro desde SoloEstrenos
+    @PostMapping("/admin/usuariosFront/save")
+    public String usuariosFrontSave(Usuario usuarioEdit) {
+        usuarioService.saveOrUpdate(usuarioEdit);
+        return "/index";
+    }
+    @GetMapping("/admin/usuariosFront/add")
+    public String usuariosFrontAdd(Model model) {
+        model.addAttribute("usuario", new Usuario());
+        tipoUsuarioService.findAll().
+                ifPresent(tipoUsuarios -> model.addAttribute("tipoUsuarios", tipoUsuarios));
+        return "home/registro/index";
+    }
+
 
     @GetMapping("/admin/usuarios/edit/{id}")
     public String usuariosEdit(@PathVariable Long id, Model model) {
@@ -64,14 +81,35 @@ public class UsuarioController {
     }
 
     /* login */
-    @GetMapping("/home/login")
+/*    @GetMapping("/home/login")
     public String usuariosLogin(Model model) {
         peliculaService.findAll().ifPresent(peliculas -> model.addAttribute("peliculas", peliculas));
-        return "/home/login/index";
-    }
+        System.out.println(isilUserDetailsService.getTipoUsuario()+"13123");
+        if(isilUserDetailsService.getTipoUsuario()==3) {
+            return "/home/login/index";
+        }
+        else{
+            return "redirect:/admin/usuarios";
+        }
 
-    /* register */
-    @GetMapping("/registro/usuario")
+
+    }*/
+    @GetMapping("/home/login")
+    public String usuariosLogin(Model model, HttpSession session) {
+        peliculaService.findAll().ifPresent(peliculas -> model.addAttribute("peliculas", peliculas));
+        //Variable de sesion
+          Usuario su=usuarioService.findByCorreo(isilUserDetailsService.getCorreo());
+          session.setAttribute("sessionUser",su);
+        //Devolver home dependiendo del tipo de usuario
+        if(isilUserDetailsService.getTipoUsuario()==3) {
+            return "/home/login/index";
+        }
+        else{
+            return "redirect:/admin/usuarios";
+        }
+
+
+    }    @GetMapping("/registro/usuario")
     public String usuariosRegister(Model model) {
         model.addAttribute("usuario", new Usuario());
         return "/home/registro/index";
@@ -87,25 +125,12 @@ public class UsuarioController {
     public String estadoUsuario(@PathVariable Long id,@PathVariable Integer estado) {
         usuarioService.estadoUsuario(id,estado);
         return "redirect:/admin/usuarios";
-
     }
 
-/*    @GetMapping("/admin/usuarios/estadoUsuario/{estado}/{id}")
-    public String estadoUsuario(@PathVariable Long estado,Long id) {
-        System.out.println("Si toy we 1");
-        usuarioService.editarUsuario(estado,id);
-        System.out.println("Si toy we 2");
-        return "redirect:/admin/usuarios/index";
-
-    }*/
-
-
-
-
-
-/*    @PostMapping("/admin/usuarios/deshabilitarEstado")
-    public void deshabilitarEstado(Integer estado,Integer id) {
-        usuarioService.editarUsuario(estado,id);
-    }*/
+    @GetMapping("/logout")
+    public String logout(HttpSession session) {
+        session.removeAttribute("sessionUser");
+        return "/index";
+    }
 
 }

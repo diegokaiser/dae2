@@ -1,8 +1,10 @@
 package com.isil.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
@@ -84,7 +86,8 @@ public class Pelicula {
     @Column(name = "admiModificacion")
     private String admiModificacion;
 
-
+    @JsonIgnore
+    @ToString.Exclude
     @OneToMany(mappedBy = "pelicula", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<Entrada> entradas;
 

@@ -1,111 +1,105 @@
-<!--
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org" >
 <head>
-    <%@ include file="../WEB-INF/jspf/web/meta.jsp" %>
-    <%@ include file="../WEB-INF/jspf/web/styles.jsp" %>
-    <title>Comprar entrada para: {pelicula.getNombre()}  | Solo Estrenos</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="stylesheet" href="https://estrenoshoyb.s3.amazonaws.com/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://estrenoshoyb.s3.amazonaws.com/css/slick.css">
+    <link rel="stylesheet" href="https://estrenoshoyb.s3.amazonaws.com/css/style.css">
+    <link rel="stylesheet" type="text/css" href="https://estrenoshoyb.s3.amazonaws.com/fontawesome/css/all.min.css">
+    <title>Acceso de usuarios | Solo Estrenos</title>
 </head>
 <body>
+<!-- header -->
+<header class="headertop">
+    <nav class="navbar navbar-expand-lg navbar-light p-0">
+        <a class="navbar-brand" th:href="@{/home/login}">
+            <img src="https://estrenoshoyb.s3.amazonaws.com/images/logo.svg " alt=""><span>Solo estrenos</span>
+        </a>
+    </nav>
+</header>
+
 <div class="bkg_video">
-    <video autoplay loop poster="<%=request.getContextPath()%>/RESOURCES/images/<%=pelicula.getPortadaDestacada()%>">
-        <source src="<%=request.getContextPath()%>/RESOURCES/images/bkg_video.webm">
+    <video autoplay loop>
+        <source src="https://estrenoshoyb.s3.amazonaws.com/images/blackwidow_banner-dest.webm">
     </video>
 </div>
 <div class="content">
-    <%@ include file="../WEB-INF/jspf/web/header.jsp" %>
     <div class="form">
-        <form class="pt-5">
-            <input type="hidden" id="processing" name="processing" value="validarCompra">
-            <h2>Entradas para:</h2>
-            <div class="form-group pt-4">
-                <label for="card-number">Número de tarjeta:</label>
-                <input type="text" class="form-control nnotarrow" id="card-number">
-            </div>
-            <div class="form-row form-group">
-                <div class="col">
-                    <label for="card-date">Mes/Año:</label>
-                    <input type="text" class="form-control nnotarrow" id="card-date">
+        <form method="POST" th:action="@{/admin/compras/save}" th:object="${compra}">
+
+
+            <h1 class="text-center text-white font-weight-bold mb-4">Resumen de compra </h1>
+
+            <!-- Si se estrena en varios cines -->
+            <!--th:field="*{idSala}-->
+            <div class="row">
+                <div class="col-6">
+                    <div class="form-group">
+                        <label>Nombre:</label>
+                        <p th:text="${session.sessionUser.nombre+' '+session.sessionUser.apellido}" ></p>
+                    </div>
+                    <div class="form-group">
+                        <label>DNI:</label>
+                        <p th:text="${session.sessionUser.numeroDocumento}" ></p>
+                    </div>
+                    <div class="form-group">
+                        <label>Cine:</label>
+                        <p th:text="${cine}" ></p>
+                    </div>
+                    <div class="form-group">
+                        <label>Sede:</label>
+                        <p th:text="${sede}" ></p>
+                    </div>
                 </div>
-                <div class="col">
-                    <label for="card-cvv">CVV:</label>
-                    <input type="text" class="form-control nnotarrow" id="card-cvv">
+                <div class="col-6">
+                    <div class="form-group">
+                        <label>Sala:</label>
+                        <p th:text="${sala}" ></p>
+                    </div>
+                    <div class="form-group">
+                        <label>Cantidad entradas:</label>
+                        <p th:text="${cantidad}" ></p>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Precio:</label>
+                        <p th:text="${precio}" ></p>
+                    </div>
+                    <div class="form-group">
+                        <label>Total:</label>
+                        <p th:text="${total}" ></p>
+                    </div>
                 </div>
             </div>
             <div class="form-group">
-                <label for="email">Correo electrónico:</label>
-                <input type="text" class="form-control" id="email">
-            </div>
-            <div class="form-group">
-                <a href="<%=request.getContextPath()%>/entrada/exito.jsp" class="btn btn-primary my-4 disabled gotopay">Pagar</a>
+                <button type="submit"  class="btn btn-primary my-4"> Comprar entrada </button>
             </div>
         </form>
+
+
     </div>
 </div>
-<script src="https://unpkg.com/imask"></script>
-<script>
-    var tarjeta = document.getElementById('card-cvv');
-    var tarjetaMaskOptions = {
-        mask: '000'
-    };
-    var tarjetaMask = IMask(tarjeta, tarjetaMaskOptions);
+<footer class="p-3">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col">
+                <p>
+                    &copy; SOLO ESTRENOS.
+                </p>
+                <p>
+                    All Rigths Reserved.
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+<script src="https://estrenoshoyb.s3.amazonaws.com/js/jquery-3.5.1.slim.min.js"></script>
+<script src="https://estrenoshoyb.s3.amazonaws.com/js/slick.min.js"></script>
+<script src="https://estrenoshoyb.s3.amazonaws.com/js/popper.min.js"></script>
+<script src="https://estrenoshoyb.s3.amazonaws.com/js/bootstrap.min.js"></script>
+<script src="https://estrenoshoyb.s3.amazonaws.com/js/alla.js"></script>
+<!-- scripts -->
 
 
-    var carddate = document.getElementById('card-date');
-    var carddateMaskOptions = {
-        mask: '00/00',
-    };
-    var carddateMask = IMask(carddate, carddateMaskOptions);
-
-
-    var cvv = document.getElementById('card-number');
-    var cvvMaskOptions = {
-        mask: '0000-0000-0000-0000'
-    };
-    var cvvMask = IMask(cvv, cvvMaskOptions);
-</script>
-<%@ include file="../WEB-INF/jspf/web/footer.jsp" %>
-<%@ include file="../WEB-INF/jspf/web/scripts.jsp" %>
-<script>
-    $("#card-number").on("input", function () {
-        if ($(this).val().length == 19) {
-            $(this).addClass("valid");
-            console.log("#card-number valid");
-        }
-        abrirBoton();
-    });
-    $("#card-date").on("input", function () {
-        if ($(this).val().length == 5) {
-            $(this).addClass("valid");
-            console.log("#card-date valid");
-        }
-        abrirBoton();
-    });
-    $("#card-cvv").on("input", function () {
-        if ($(this).val().length == 3) {
-            $(this).addClass("valid");
-            console.log("#card-cvv valid");
-        }
-        abrirBoton();
-    });
-    $("#email").on("input", function () {
-        if ($(this).val().indexOf('@') > -1) {
-            $(this).addClass("valid");
-            console.log("#email valid");
-        }
-        abrirBoton();
-    });
-    function abrirBoton() {
-        if ($("#card-number").hasClass("valid") && $("#card-date").hasClass("valid") && $("#card-cvv").hasClass("valid") && $("#email").hasClass("valid")) {
-            $(".gotopay").removeClass("disabled");
-        } else {
-            if (!$(".gotopay").hasClass("disabled")) {
-                $(".gotopay").addClass("disabled");
-            }
-        }
-    }
-
-</script>
-</body>
-</html>
--->

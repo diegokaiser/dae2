@@ -4,3 +4,9 @@
  label,h2,h3{
      color: white;
  }
+ body{
+     color: #ffffff;
+ }
+ form{
+     padding: 100px 500px 100px 500px;
+ }

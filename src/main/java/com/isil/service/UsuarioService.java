@@ -56,6 +56,11 @@ public class UsuarioService implements BaseService<Usuario, Long> {
                    return true;
                }).orElse(false);
    }
+    public Usuario findByCorreo(String id) {
+        return usuarioRepository.findByCorreo(id);
+    }
+
+
 
 
 

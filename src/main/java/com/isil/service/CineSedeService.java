@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.DoubleStream;
 
 @Service
 public class CineSedeService implements BaseService<CineSede, Long> {
@@ -68,5 +69,7 @@ public class CineSedeService implements BaseService<CineSede, Long> {
         return  Optional.of(cineSedeRepository.findByIdCineSede(Long.valueOf(id)));
 
     }
+
+
 
 }

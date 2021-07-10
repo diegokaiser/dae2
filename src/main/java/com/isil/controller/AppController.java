@@ -14,9 +14,9 @@ public class AppController {
 //        return "redirect:/menu";
 //    }
 
-    @GetMapping("login")
+    @GetMapping("/login")
     public String login(){
-        return "home/login/index";
+        return "index";
     }
 
 }

@@ -1,0 +1,334 @@
+{
+	"info": {
+		"_postman_id": "69cc058e-4d08-4665-bb81-424b7ed6613b",
+		"name": "SistemaCine",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "localhost:8080/api/usuarios",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/api/usuarios",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"usuarios"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:8080/api/usuarios/1",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/api/usuarios/1",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"usuarios",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:8080/api/deleteUsuario/47",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/api/deleteUsuario/47",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"deleteUsuario",
+						"47"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:8080/api/usuarios",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "        {\r\n        \"nombre\": \"Tunelo\",\r\n        \"apellido\": \"Winters\",\r\n        \"correo\": \"correodeprueba1@hotmail.com\",\r\n        \"contrasena\": \"ZYR34ZFK7JX\",\r\n        \"tipoDocumento\": 1,\r\n        \"numeroDocumento\": \"35347417\"\r\n        }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/api/usuarios",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"usuarios"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:8080/api/peliculas",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/api/peliculas/1",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"peliculas",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:8080/api/peliculas",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/api/peliculas/1",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"peliculas",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:8080/api/peliculas",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nombre\": \"Predestination\",\r\n    \"duracion\": \"2:00:00\",\r\n    \"fechaEstreno\": \"2017-06-24 00:00:00\",\r\n    \"idioma\": \"Ingles\",\r\n    \"pais\": \"EEUU\",\r\n    \"subtitulos\": 0,\r\n    \"doblada\": 0,\r\n    \"descripcion\": \"Un hombre que pone bombas\",\r\n    \"genero\": \"Acción\",\r\n    \"estado\": 0,\r\n    \"trailer\": \"\",\r\n    \"recomendada\": 0,\r\n    \"portada\": \"0\",\r\n    \"destacada\": 0,\r\n    \"protagonistas\": \"Juanito\",\r\n    \"portadaDestacada\": \"\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/api/peliculas",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"peliculas"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:8080/api/peliculas",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nombre\": \"Predestination\",\r\n    \"duracion\": \"2:00:00\",\r\n    \"fechaEstreno\": \"2017-06-24 00:00:00\",\r\n    \"idioma\": \"Ingles\",\r\n    \"pais\": \"EEUU\",\r\n    \"subtitulos\": 0,\r\n    \"doblada\": 0,\r\n    \"descripcion\": \"Un hombre que pone bombas\",\r\n    \"genero\": \"Acción\",\r\n    \"estado\": 0,\r\n    \"trailer\": \"\",\r\n    \"recomendada\": 0,\r\n    \"portada\": \"0\",\r\n    \"destacada\": 0,\r\n    \"protagonistas\": \"Juanito\",\r\n    \"portadaDestacada\": \"\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/api/deletePelicula/22",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"deletePelicula",
+						"22"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:8080/api/peliculas",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nombre\": \"Predestination\",\r\n    \"duracion\": \"2:00:00\",\r\n    \"fechaEstreno\": \"2017-06-24 00:00:00\",\r\n    \"idioma\": \"Ingles\",\r\n    \"pais\": \"EEUU\",\r\n    \"subtitulos\": 0,\r\n    \"doblada\": 0,\r\n    \"descripcion\": \"Un hombre que pone bombas\",\r\n    \"genero\": \"Acción\",\r\n    \"estado\": 0,\r\n    \"trailer\": \"\",\r\n    \"recomendada\": 0,\r\n    \"portada\": \"0\",\r\n    \"destacada\": 0,\r\n    \"protagonistas\": \"Juanito\",\r\n    \"portadaDestacada\": \"\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/api/peliculas/estado/1",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"peliculas",
+						"estado",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:8080/api/cineSede",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/api/cineSede",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"cineSede"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:8080/api/cineSede",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/api/cineSede/1",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"cineSede",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:8080/api/cineSede",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nombre\": \"Cineplanet Namekusei\",\r\n    \"direccion\": \"Av.san Verdes\",\r\n    \"estado\": 1,\r\n    \"idDistrito\": 36,\r\n    \"idCine\": 1\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/api/cineSede",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"cineSede"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:8080/api/deleteCineSede/28",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/api/deleteCineSede/28",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"deleteCineSede",
+						"28"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:8080/api/deleteCineSede/28",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/api/cineSede/cine/1",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"cineSede",
+						"cine",
+						"1"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

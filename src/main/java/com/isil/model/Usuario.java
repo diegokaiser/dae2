@@ -1,13 +1,13 @@
 package com.isil.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.*;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import java.time.LocalDate;
 
+ @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
@@ -55,6 +55,8 @@ public class Usuario {
     @Column(name = "admiModificacion")
     private String admiModificacion;
 
+    @JsonIgnore
+    @ToString.Exclude
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "idTipoUsuario", insertable = false, updatable = false)
     private TipoUsuario tipoUsuario;
