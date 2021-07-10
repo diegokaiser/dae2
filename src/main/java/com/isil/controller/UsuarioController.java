@@ -101,7 +101,7 @@ public class UsuarioController {
           Usuario su=usuarioService.findByCorreo(isilUserDetailsService.getCorreo());
           session.setAttribute("sessionUser",su);
         //Devolver home dependiendo del tipo de usuario
-        if(isilUserDetailsService.getTipoUsuario()==3) {
+        if(isilUserDetailsService.getTipoUsuario()==1) {
             return "/home/login/index";
         }
         else{
