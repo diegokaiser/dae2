@@ -1,6 +1,7 @@
 package com.isil.loader;
 
 import com.isil.model.CineSede;
+import com.isil.model.Pelicula;
 import com.isil.repository.CineSedeRepository;
 import com.isil.repository.PeliculaRepository;
 import org.springframework.boot.CommandLineRunner;
@@ -23,7 +24,12 @@ public class PeliculaLoader implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        // List<Pelicula> peliculas = new ArrayList<>();
+
+        List<Pelicula> peliculas = new ArrayList<>();
+/*
+        new Pelicula()
+*/
+
         // peliculas.add(new Pelicula(null,"spiderman","1h",null,"español","eeuu",1,1,"tio","accion",1,"sisi",1,"aa",1,"thro","sisi",null,null,null));
         // peliculas.add(new Pelicula(null,"0000000001","ISIL SA",null));
         // peliculas.add(new Pelicula(null,"0000000002","Bodega Don Pepe SA",null));
